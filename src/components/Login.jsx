@@ -29,12 +29,7 @@ const Login = () => {
     setIsSubmitting(true);
 
     try {
-      const isEmailValid = await checkEmailInAPI(email);
-      if (!isEmailValid) {
-        setError((prev) => ({ ...prev, email: "Email not found in the system" }));
-        setIsSubmitting(false);
-        return;
-      }
+   
 
       if (password !== correctPassword) {
         setError((prev) => ({ ...prev, password: "Incorrect password" }));
