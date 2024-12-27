@@ -232,12 +232,62 @@ const OnboardingFlow = () => {
     localStorage.setItem('url',category.url);
     localStorage.setItem('title',category.title);
     setSelectedCategory(category);
+    submitToAirtable(category.title)
     if (category.path) {
       navigate(category.path);
     } else {
       setShowPersonaQuestions(true);
     }
   };
+
+
+
+
+
+
+
+  const submitToAirtable = async (title) => {
+    try {
+      // Airtable API details (replace with your actual values)
+      const AIRTABLE_API_KEY = 'patprnTG99hS6uQWv.b752084329e8723bc5bb5d8ff5abb7850004127579b197cc7ed4236e565f3305';
+      const AIRTABLE_BASE_ID = 'appxGg8YmAsauJHIV';
+      const AIRTABLE_TABLE_ID = 'Table%201';
+      const sleepemail = localStorage.getItem('plutoytemail') || 'anonymous';
+      const time =new Date().toLocaleString('en-IN', { 
+        timeZone: 'Asia/Kolkata',
+        dateStyle: 'full',
+        timeStyle: 'long'
+      });
+      
+      const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`;
+
+      const response = await axios.post(url, {
+        records: [
+          {
+            fields: {
+              email: sleepemail,
+              Chapter: title,
+              Date:time
+            }
+          }
+        ]
+      }, {
+        headers: {
+          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log('Submission successful:', response.data);
+      // Additional success handling (e.g., navigation, showing success message)
+    } catch (error) {
+      console.error('Error submitting to Airtable:', error);
+      
+    }
+  };
+
+
+
 
   const handlePersonaSelect = (persona) => {
     localStorage.setItem('persona', persona.category);
