@@ -41,7 +41,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/refund" element={<Refund />} />
         <Route path="/youtube" element={<YTPlayer />} />
-        <Route path="/deepsleep" element={<SleepPlayer />} />
+        <Route path="/deepsleep" element={<OnboardingFlow />} />
         <Route path="/join" element={<LoginSleep />} />
         <Route path="/onboarding" element={<OnboardingFlow/>} />
         <Route path="/install" element={<PWAInstallPrompt/>} />
