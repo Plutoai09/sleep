@@ -24,7 +24,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const correctPassword = "5545";
+    const correctPassword = "8560";
     setError({ email: "", password: "" });
     setIsSubmitting(true);
 
