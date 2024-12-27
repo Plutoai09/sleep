@@ -329,10 +329,10 @@ const OnboardingFlow = () => {
             </div>
 
             {/* Categories Section */}
-            <CategoryGrid items={categories} sectionTitle="Fiction" />
+            <CategoryGrid items={categories} sectionTitle="Fiction Sleep Stories" />
 
             {/* Learning Section */}
-            <CategoryGrid items={learningCategories} sectionTitle="Non-fiction" />
+            <CategoryGrid items={learningCategories} sectionTitle="Non-fiction Sleep Stories" />
           </div>
         )}
       </div>
