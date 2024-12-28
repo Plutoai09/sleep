@@ -133,7 +133,7 @@ const OnboardingFlow = () => {
 
   {
     id: 'youtube',
-    title: 'House suddenly appeared',
+    title: 'Mysterious Hourse',
     path: '/player',
     image: '/images/sudden.png',
     url: 'https://storage.googleapis.com/plutoai/House%20in%20field.mp3' 
@@ -141,7 +141,7 @@ const OnboardingFlow = () => {
 
   {
     id: 'youtube',
-    title: 'That Night Shift',
+    title: 'Chilling Night Shift',
     icon: Youtube,
     path: '/player',
     image: '/images/nightshift.png',
@@ -150,7 +150,7 @@ const OnboardingFlow = () => {
 
   {
     id: 'youtube',
-    title: 'Do not take pictures',
+    title: 'No escape town',
     icon: Youtube,
     path: '/player',
     image: '/images/nophotos.png',
@@ -159,7 +159,7 @@ const OnboardingFlow = () => {
 
   {
     id: 'youtube',
-    title: 'Stars & Moon disappeared',
+    title: 'The night without stars',
     icon: Youtube,
     path: '/player',
     image: '/images/stars.png',
@@ -167,7 +167,7 @@ const OnboardingFlow = () => {
   },
   {
     id: 'youtube',
-    title: 'Night as a security guard',
+    title: 'The security guard',
     icon: Youtube,
     path: '/player',
     image: '/images/security.png',
@@ -175,7 +175,7 @@ const OnboardingFlow = () => {
   },
   {
     id: 'youtube',
-    title: 'A Strange Package',
+    title: 'The Mystery Package',
     icon: Youtube,
     path: '/player',
     image: '/images/strange.png',
@@ -183,7 +183,7 @@ const OnboardingFlow = () => {
   },
   {
     id: 'youtube',
-    title: 'The train hasn\'t stopped',
+    title: 'Please stop the train',
     icon: Youtube,
     path: '/player',
     image: '/images/train.png',
@@ -192,7 +192,7 @@ const OnboardingFlow = () => {
 
   {
     id: 'youtube',
-    title: 'The wild raining night',
+    title: 'Raining Town',
     icon: Youtube,
     path: '/player',
     image: '/images/wild.png',
