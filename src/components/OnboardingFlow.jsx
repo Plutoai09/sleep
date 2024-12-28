@@ -133,7 +133,7 @@ const OnboardingFlow = () => {
 
   {
     id: 'youtube',
-    title: 'Mysterious Hourse',
+    title: 'Mysterious House',
     path: '/player',
     image: '/images/sudden.png',
     url: 'https://storage.googleapis.com/plutoai/House%20in%20field.mp3' 
