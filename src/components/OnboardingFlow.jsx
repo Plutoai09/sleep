@@ -112,93 +112,197 @@ const OnboardingFlow = () => {
   ];
 
   // Create learning categories by duplicating and modifying the IDs
-  const learningCategories = [  {
-    id: 'conversation',
-    title: 'Conversation',
-    icon: Users,
-    path: null,
-    image: '/images/artof.png'
-  },
+  const horrorCategories = [  
   {
     id: 'youtube',
-    title: 'Youtube',
-    icon: Youtube,
-    path: '/youtube',
-    image: '/images/ytsecret.png'
-  },
-  {
-    id: 'youtube',
-    title: 'Ancient Human History',
+    title: 'Abandoned Amusement Park',
     icon: Youtube,
     path: '/player',
-    image: '/images/ancient.png',
-    url: 'https://storage.googleapis.com/plutoai/Ancient%20human.mp3' 
+    image: '/images/amusement.png',
+    url: 'https://storage.googleapis.com/plutoai/Amusement%20Park.mp3' 
   },
 
   {
     id: 'youtube',
-    title: 'The Big Bang',
+    title: 'Hidden room in my house',
     icon: Youtube,
     path: '/player',
-    image: '/images/big.png',
-    url: 'https://storage.googleapis.com/plutoai/Big%20Bang.mp3' 
+    image: '/images/hidden.png',
+    url: 'https://storage.googleapis.com/plutoai/Hidden%20room%20in%20house.mp3' 
   },
 
   {
     id: 'youtube',
-    title: 'Philosophy 101',
-    icon: Youtube,
+    title: 'House suddenly appeared',
     path: '/player',
-    image: '/images/philosophy.png',
-    url: 'https://storage.googleapis.com/plutoai/Biggest%20ideas%20in%20philosophy.mp3' 
+    image: '/images/sudden.png',
+    url: 'https://storage.googleapis.com/plutoai/House%20in%20field.mp3' 
   },
 
   {
     id: 'youtube',
-    title: 'The Cold War',
+    title: 'That Night Shift',
     icon: Youtube,
     path: '/player',
-    image: '/images/cold.png',
-    url: 'https://storage.googleapis.com/plutoai/Cold%20war.mp3' 
+    image: '/images/nightshift.png',
+    url: 'https://storage.googleapis.com/plutoai/Night%20Shift.mp3' 
   },
 
   {
     id: 'youtube',
-    title: 'Exploring Space',
+    title: 'Do not take pictures',
     icon: Youtube,
     path: '/player',
-    image: '/images/exploring.png',
-    url: 'https://storage.googleapis.com/plutoai/Exploring%20Space.mp3' 
+    image: '/images/nophotos.png',
+    url: 'https://storage.googleapis.com/plutoai/No%20Photos%20allowed%20town.mp3' 
   },
 
   {
     id: 'youtube',
-    title: 'Paradoxes of Life',
+    title: 'Stars & Moon disappeared',
     icon: Youtube,
     path: '/player',
-    image: '/images/life.png',
-    url: 'https://storage.googleapis.com/plutoai/Life%20paradox.mp3' 
+    image: '/images/stars.png',
+    url: 'https://storage.googleapis.com/plutoai/No%20Stars%20%26%20Moon.mp3' 
   },
   {
     id: 'youtube',
-    title: 'Making of Stalin',
+    title: 'Night as a security guard',
     icon: Youtube,
     path: '/player',
-    image: '/images/stalin.png',
-    url: 'https://storage.googleapis.com/plutoai/stalin.mp3' 
+    image: '/images/security.png',
+    url: 'https://storage.googleapis.com/plutoai/Security%20guard.mp3' 
   },
   {
     id: 'youtube',
-    title: 'Stoicism 101',
+    title: 'A Strange Package',
     icon: Youtube,
     path: '/player',
-    image: '/images/stoicism.png',
-    url: 'https://storage.googleapis.com/plutoai/stoicism.mp3' 
+    image: '/images/strange.png',
+    url: 'https://storage.googleapis.com/plutoai/Strange%20Package.mp3' 
   },
+  {
+    id: 'youtube',
+    title: 'The train hasn\'t stopped',
+    icon: Youtube,
+    path: '/player',
+    image: '/images/train.png',
+    url: 'https://storage.googleapis.com/plutoai/Train%20that%20hasn\'t%20stopped.mp3' 
+  },
+
+  {
+    id: 'youtube',
+    title: 'The wild raining night',
+    icon: Youtube,
+    path: '/player',
+    image: '/images/wild.png',
+    url: 'https://storage.googleapis.com/plutoai/Weird%20Rain.mp3' 
+  },
+
+]
+
+
+
+
+
+
+
+
+
+const learningCategories = [  {
+  id: 'conversation',
+  title: 'Conversation',
+  icon: Users,
+  path: null,
+  image: '/images/artof.png'
+},
+{
+  id: 'youtube',
+  title: 'Youtube',
+  icon: Youtube,
+  path: '/youtube',
+  image: '/images/ytsecret.png'
+},
+{
+  id: 'youtube',
+  title: 'Ancient Human History',
+  icon: Youtube,
+  path: '/player',
+  image: '/images/ancient.png',
+  url: 'https://storage.googleapis.com/plutoai/Ancient%20human.mp3' 
+},
+
+{
+  id: 'youtube',
+  title: 'The Big Bang',
+  icon: Youtube,
+  path: '/player',
+  image: '/images/big.png',
+  url: 'https://storage.googleapis.com/plutoai/Big%20Bang.mp3' 
+},
+
+{
+  id: 'youtube',
+  title: 'Philosophy 101',
+  icon: Youtube,
+  path: '/player',
+  image: '/images/philosophy.png',
+  url: 'https://storage.googleapis.com/plutoai/Biggest%20ideas%20in%20philosophy.mp3' 
+},
+
+{
+  id: 'youtube',
+  title: 'The Cold War',
+  icon: Youtube,
+  path: '/player',
+  image: '/images/cold.png',
+  url: 'https://storage.googleapis.com/plutoai/Cold%20war.mp3' 
+},
+
+{
+  id: 'youtube',
+  title: 'Exploring Space',
+  icon: Youtube,
+  path: '/player',
+  image: '/images/exploring.png',
+  url: 'https://storage.googleapis.com/plutoai/Exploring%20Space.mp3' 
+},
+
+{
+  id: 'youtube',
+  title: 'Paradoxes of Life',
+  icon: Youtube,
+  path: '/player',
+  image: '/images/life.png',
+  url: 'https://storage.googleapis.com/plutoai/Life%20paradox.mp3' 
+},
+{
+  id: 'youtube',
+  title: 'Making of Stalin',
+  icon: Youtube,
+  path: '/player',
+  image: '/images/stalin.png',
+  url: 'https://storage.googleapis.com/plutoai/stalin.mp3' 
+},
+{
+  id: 'youtube',
+  title: 'Stoicism 101',
+  icon: Youtube,
+  path: '/player',
+  image: '/images/stoicism.png',
+  url: 'https://storage.googleapis.com/plutoai/stoicism.mp3' 
+},
 
 
 
 ]
+
+
+
+
+
+
+
 
   const personaOptions = [
     {
@@ -381,9 +485,9 @@ const OnboardingFlow = () => {
 
             {/* Categories Section */}
             <CategoryGrid items={categories} sectionTitle="Fiction Sleep Stories" />
-
+            <CategoryGrid items={horrorCategories} sectionTitle="Horror Bedtime Stories" />
             {/* Learning Section */}
-            <CategoryGrid items={learningCategories} sectionTitle="Non-fiction Sleep Stories" />
+            <CategoryGrid items={learningCategories} sectionTitle="Non-fiction Bedtime Stories" />
           </div>
         )}
       </div>
