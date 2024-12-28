@@ -485,7 +485,7 @@ const learningCategories = [  {
 
             {/* Categories Section */}
             <CategoryGrid items={horrorCategories} sectionTitle="Horror Bedtime Stories" />
-            <CategoryGrid items={categories} sectionTitle="Fiction Sleep Stories" />
+            <CategoryGrid items={categories} sectionTitle="Soothing Sleep Stories" />
            
             {/* Learning Section */}
             <CategoryGrid items={learningCategories} sectionTitle="Non-fiction Bedtime Stories" />
