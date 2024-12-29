@@ -399,9 +399,14 @@ const learningCategories = [  {
     navigate('/artofconversation');
   };
 
-  const CategoryGrid = ({ items, sectionTitle }) => (
+  const CategoryGrid = ({ items, sectionTitle, sectionSubheading }) => (
     <div className="space-y-6">
-      <h2 className="text-xl font-semibold text-white pl-1">{sectionTitle}</h2>
+      <div className="space-y-1">
+        <h2 className="text-xl font-semibold text-white pl-1">{sectionTitle}</h2>
+        {sectionSubheading && (
+          <p className="text-sm text-gray-400 pl-1">{sectionSubheading}</p>
+        )}
+      </div>
       <div className="grid grid-cols-3 gap-4">
         {items.map((category) => (
           <div key={category.id} className="flex flex-col items-center space-y-3">
@@ -484,11 +489,11 @@ const learningCategories = [  {
             </div>
 
             {/* Categories Section */}
-            <CategoryGrid items={horrorCategories} sectionTitle="Horror Bedtime Stories" />
-            <CategoryGrid items={categories} sectionTitle="Soothing Sleep Stories" />
+            <CategoryGrid items={horrorCategories} sectionTitle="Gentle Horror Bedtime Stories"  sectionSubheading ="Engaging stories to escape overthinking."/>
+            <CategoryGrid items={categories} sectionTitle="Soothing Sleep Stories"  sectionSubheading ="Soothing voices for a restful sleep"/>
            
             {/* Learning Section */}
-            <CategoryGrid items={learningCategories} sectionTitle="Non-fiction Bedtime Stories" />
+            <CategoryGrid items={learningCategories} sectionTitle="Non-fiction Bedtime Stories"  sectionSubheading ="Fascinating facts & stories" />
           </div>
         )}
       </div>
