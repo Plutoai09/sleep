@@ -8,43 +8,62 @@ const PWAInstallPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if already installed
-    const isInstalled = window.matchMedia('(display-mode: standalone)').matches
-      || window.navigator.standalone 
-      || document.referrer.includes('android-app://');
+    let mounted = true;
 
-    if (isInstalled) {
-      navigate('/onboarding');
-      return;
-    }
+    const checkInstallation = async () => {
+      // Check if already installed
+      const isInstalled = window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone 
+        || document.referrer.includes('android-app://');
 
-    // Check for existing prompt first
-    if (window.deferredPrompt) {
-      setDeferredPrompt(window.deferredPrompt);
-      setIsInstallReady(true);
-    }
+      if (isInstalled) {
+        navigate('/onboarding');
+        return;
+      }
+
+      // Check if there's an existing deferred prompt
+      if (window.deferredPrompt && mounted) {
+        setDeferredPrompt(window.deferredPrompt);
+        setIsInstallReady(true);
+      }
+    };
+
+    // Run initial check
+    checkInstallation();
 
     const handleBeforeInstallPrompt = (e) => {
       // Prevent the mini-infobar from appearing on mobile
       e.preventDefault();
-      // Stash the event so it can be triggered later
+      
+      // Store the event
       window.deferredPrompt = e;
-      setDeferredPrompt(e);
-      setIsInstallReady(true);
+      
+      if (mounted) {
+        setDeferredPrompt(e);
+        setIsInstallReady(true);
+      }
     };
 
+    // Add the event listener before checking installation status
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    
-    window.addEventListener('appinstalled', () => {
+
+    const handleAppInstalled = () => {
       // Clear the prompt
       window.deferredPrompt = null;
-      setDeferredPrompt(null);
-      setIsInstallReady(false);
-      navigate('/onboarding');
-    });
+      if (mounted) {
+        setDeferredPrompt(null);
+        setIsInstallReady(false);
+        navigate('/onboarding');
+      }
+    };
 
+    window.addEventListener('appinstalled', handleAppInstalled);
+
+    // Cleanup function
     return () => {
+      mounted = false;
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
     };
   }, [navigate]);
 
@@ -93,6 +112,11 @@ const PWAInstallPage = () => {
 
   // Check if it's iOS
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  // If install is not ready and not iOS, show loading or return null
+  if (!isInstallReady && !isIOS) {
+    return null; // Or return a loading state if preferred
+  }
 
   return (
     <div className="min-h-screen bg-[#0a192f] flex items-center justify-center p-4">

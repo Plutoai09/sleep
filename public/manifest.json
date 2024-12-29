@@ -5,28 +5,36 @@
     {
       "src": "favicon.ico",
       "sizes": "64x64",
-      "type": "image/x-icon"
+      "type": "image/x-icon",
+      "purpose": "any"
     },
     {
       "src": "logo.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "logo.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": "/onboarding",
+  "id": "com.pluto.audiobooks",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "theme_color": "#0a192f",
   "background_color": "#060f1c",
   "orientation": "portrait",
+  "description": "Listen to your favorite audiobooks with Pluto",
+  "prefer_related_applications": false,
   "related_applications": [
     {
       "platform": "webapp",
       "url": "https://pluto-stories.vercel.app/manifest.json",
       "id": "com.pluto.audiobooks"
-    }]
+    }
+  ]
 }
