@@ -22,7 +22,7 @@
     }
   ],
   "id": "com.pluto.audiobooks",
-  "start_url": "/",
+  "start_url": "/onboarding",
   "scope": "/",
   "display": "standalone",
   "theme_color": "#0a192f",
