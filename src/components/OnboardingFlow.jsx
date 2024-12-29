@@ -493,7 +493,7 @@ const learningCategories = [  {
             <CategoryGrid items={categories} sectionTitle="Soothing Sleep Stories"  sectionSubheading ="Soothing voices for a restful sleep"/>
            
             {/* Learning Section */}
-            <CategoryGrid items={learningCategories} sectionTitle="Non-fiction Bedtime Stories"  sectionSubheading ="Fascinating facts & stories" />
+            <CategoryGrid items={learningCategories} sectionTitle="Non-Fiction Bedtime Stories"  sectionSubheading ="Fascinating facts & stories" />
           </div>
         )}
       </div>
