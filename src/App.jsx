@@ -20,12 +20,15 @@ import OnboardingFlow from "./components/OnboardingFlow";
 import PWAInstallPrompt from "./components/PWAInstallPrompt";
 import AppLaunch from "./components/AppLaunch";
 import Player from "./components/Player";
+import { Home } from "lucide-react";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<OnboardingFlow />} />
+        <Route path="/" element={<Homepage />} />
+        
+        <Route path="/home" element={<Homepage />} />
         <Route path="/update" element={<ConversationInterface />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<Loginyt />} />
