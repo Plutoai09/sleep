@@ -26,9 +26,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<OnboardingFlow />} />
         
-        <Route path="/home" element={<Homepage />} />
+        <Route path="/home" element={<OnboardingFlow />} />
         <Route path="/update" element={<ConversationInterface />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<Loginyt />} />
