@@ -40,7 +40,7 @@ const Login = () => {
 
       localStorage.setItem("authCode", "pluto_success");
       localStorage.setItem("plutoemail", email);
-      navigate('/install');
+      navigate('/onboarding');
     } catch (error) {
       console.error("Submission error:", error);
       setIsSubmitting(false);
