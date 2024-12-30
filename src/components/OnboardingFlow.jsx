@@ -109,6 +109,57 @@ const OnboardingFlow = () => {
       chaptername: 'End of the day',
       url: 'https://storage.googleapis.com/plutoai/user_sleep_chapter9.mp3' 
     },
+
+    {
+      id: 'sleep',
+      title: 'Tide of Love',
+      icon: Book,
+      path: '/player',
+      image: '/images/tide.png',
+      chaptername: 'End of the day',
+      url: 'https://storage.googleapis.com/plutoai/Tide%20of%20Love.mp3' 
+    },
+
+    {
+      id: 'sleep',
+      title: 'Journey to Dinoland',
+      icon: Book,
+      path: '/player',
+      image: '/images/dino.png',
+      chaptername: 'End of the day',
+      url: 'https://storage.googleapis.com/plutoai/Journey%20to%20Dino%20era.mp3' 
+    },
+
+    {
+      id: 'sleep',
+      title: 'Journey into the sea',
+      icon: Book,
+      path: '/player',
+      image: '/images/sea.png',
+      chaptername: 'End of the day',
+      url: 'https://storage.googleapis.com/plutoai/Journey%20under%20the%20sea.mp3' 
+    },
+
+    
+    {
+      id: 'sleep',
+      title: 'Sherlock adventure',
+      icon: Book,
+      path: '/player',
+      image: '/images/sherlock.png',
+      chaptername: 'End of the day',
+      url: 'https://storage.googleapis.com/plutoai/Sherlock.mp3' 
+    },
+
+    {
+      id: 'sleep',
+      title: 'Around the world in 80 days',
+      icon: Book,
+      path: '/player',
+      image: '/images/around.png',
+      chaptername: 'End of the day',
+      url: 'https://storage.googleapis.com/plutoai/Around%20the%20world.mp3' 
+    },
   ];
 
   // Create learning categories by duplicating and modifying the IDs
