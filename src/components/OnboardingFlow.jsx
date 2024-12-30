@@ -489,8 +489,11 @@ const learningCategories = [  {
             </div>
 
             {/* Categories Section */}
-            <CategoryGrid items={horrorCategories} sectionTitle="Gentle Horror Bedtime Stories"  sectionSubheading ="Engaging stories to escape overthinking."/>
+
+
             <CategoryGrid items={categories} sectionTitle="Soothing Sleep Stories"  sectionSubheading ="Soothing voices for a restful sleep"/>
+
+            <CategoryGrid items={horrorCategories} sectionTitle="Gentle Horror Bedtime Stories"  sectionSubheading ="Engaging stories to escape overthinking."/>
            
             {/* Learning Section */}
             <CategoryGrid items={learningCategories} sectionTitle="Non-Fiction Bedtime Stories"  sectionSubheading ="Fascinating facts & stories" />
