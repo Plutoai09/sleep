@@ -87,6 +87,7 @@ const Player = () => {
 
   const Name = "sleep"
   // Group all useState declarations together
+  const [lastSubmitTime, setLastSubmitTime] = useState(0);
   const [showPWAPrompt, setShowPWAPrompt] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -491,6 +492,45 @@ useEffect(() => {
 
 
 
+  const submitToAirtabletime = async (timea) => {
+    console.log("ghanti "+ timea)
+    try {
+      // Airtable API details (replace with your actual values)
+      const AIRTABLE_API_KEY = 'patGVnCpojLKL6Bd7.5d0dc21c0d5b4ce2b7d00c2620f8a2dcd63b238bc3b1236afa0c8704f40ba927';
+      const AIRTABLE_BASE_ID = 'appIHEySY3eMIzNiy';
+      const AIRTABLE_TABLE_ID = 'Table%201';
+      const sleepemail = localStorage.getItem('plutoemail') || 'anonymous';
+     
+      
+      const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`;
+
+      const response = await axios.post(url, {
+        records: [
+          {
+            fields: {
+              email: sleepemail,
+              time: timea,
+              chapter: localStorage.getItem('title')
+             
+            }
+          }
+        ]
+      }, {
+        headers: {
+          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log('Submission successful:', response.data);
+      // Additional success handling (e.g., navigation, showing success message)
+    } catch (error) {
+      console.error('Error submitting to Airtable:', error);
+      
+    }
+  };
+
+
 
 
 
@@ -500,7 +540,7 @@ useEffect(() => {
       const AIRTABLE_API_KEY = 'patprnTG99hS6uQWv.b752084329e8723bc5bb5d8ff5abb7850004127579b197cc7ed4236e565f3305';
       const AIRTABLE_BASE_ID = 'appxGg8YmAsauJHIV';
       const AIRTABLE_TABLE_ID = 'Table%201';
-      const sleepemail = localStorage.getItem('plutoytemail') || 'anonymous';
+      const sleepemail = localStorage.getItem('plutoemail') || 'anonymous';
       const time =new Date().toLocaleString('en-IN', { 
         timeZone: 'Asia/Kolkata',
         dateStyle: 'full',
@@ -542,7 +582,7 @@ useEffect(() => {
       const AIRTABLE_API_KEY = 'patprnTG99hS6uQWv.b752084329e8723bc5bb5d8ff5abb7850004127579b197cc7ed4236e565f3305';
       const AIRTABLE_BASE_ID = 'appxGg8YmAsauJHIV';
       const AIRTABLE_TABLE_ID = 'Table%201';
-      const sleepemail = localStorage.getItem('plutoytemail') || 'anonymous';
+      const sleepemail = localStorage.getItem('plutoemail') || 'anonymous';
       const time =new Date().toLocaleString('en-IN', { 
         timeZone: 'Asia/Kolkata',
         dateStyle: 'full',
@@ -797,32 +837,35 @@ useEffect(() => {
   useEffect(() => {
     if (audioElement) {
       const handleLoadedMetadata = () => {
-        console.log("Audio duration updated:", audioElement.duration);
         setDuration(audioElement.duration);
       };
 
       const handleTimeUpdate = () => {
-      
-        setCurrentTime(audioElement.currentTime);
+        const currentTimeInSeconds = audioElement.currentTime;
+        setCurrentTime(currentTimeInSeconds);
+        
+        const lastSubmitMinutes = Math.floor(lastSubmitTime / 300);
+        const currentMinutes = Math.floor(currentTimeInSeconds / 300);
+        
+        if (currentMinutes > lastSubmitMinutes) {
+          submitToAirtabletime(currentMinutes);
+          setLastSubmitTime(currentTimeInSeconds);
+        }
       };
 
-      // Add event listeners
       audioElement.addEventListener("loadedmetadata", handleLoadedMetadata);
       audioElement.addEventListener("timeupdate", handleTimeUpdate);
 
-      // Set initial duration once metadata is loaded
       if (audioElement.duration) {
         setDuration(audioElement.duration);
       }
 
-      // Cleanup function
       return () => {
         audioElement.removeEventListener("loadedmetadata", handleLoadedMetadata);
         audioElement.removeEventListener("timeupdate", handleTimeUpdate);
       };
     }
-  }, [audioElement]); 
-
+  }, [audioElement, lastSubmitTime]);
 
 
 
