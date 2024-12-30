@@ -341,7 +341,7 @@ const learningCategories = [  {
   icon: Youtube,
   path: '/player',
   image: '/images/stoicism.png',
-  url: 'https://storage.googleapis.com/plutoai/stoicism.mp3' 
+  url: 'https://storage.googleapis.com/plutoai/stoicism101.mp3' 
 },
 
 
