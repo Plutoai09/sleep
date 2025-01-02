@@ -18,6 +18,7 @@ import SleepPlayer from "./components/SleepPlayer";
 import LoginSleep from "./components/LoginSleep";
 import OnboardingFlow from "./components/OnboardingFlow";
 import PWAInstallPrompt from "./components/PWAInstallPrompt";
+import ShayariEnhancer from "./components/ShayariEnhancer";
 import AppLaunch from "./components/AppLaunch";
 import Player from "./components/Player";
 import { Home } from "lucide-react";
@@ -27,7 +28,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<OnboardingFlow />} />
-        
+        <Route path="/shayari" element={<ShayariEnhancer />} />
         <Route path="/home" element={<OnboardingFlow />} />
         <Route path="/update" element={<ConversationInterface />} />
         <Route path="/login" element={<Login />} />
