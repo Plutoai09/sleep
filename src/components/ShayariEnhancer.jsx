@@ -221,7 +221,7 @@ const ShayariEnhancer = () => {
                       className="w-full p-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 shadow-sm text-base"
                       value={inputShayari}
                       onChange={(e) => setInputShayari(e.target.value)}
-                      placeholder="Write few lines of your shayari here..."
+                      placeholder="Write just two lines here"
                     />
                   </div>
 
