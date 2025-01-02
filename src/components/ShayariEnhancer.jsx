@@ -200,7 +200,7 @@ const ShayariEnhancer = () => {
               </h1>
               <p className="text-center text-gray-600 mt-2 text-sm sm:text-base">
                 {showInput ? 
-                  'Transform your thoughts into beautiful verses' : 
+                  'Write first few lines and our app with write the rest of shayari for you.' : 
                   'Share these magical words with your friends'}
               </p>
             </div>
@@ -221,7 +221,7 @@ const ShayariEnhancer = () => {
                       className="w-full p-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 shadow-sm text-base"
                       value={inputShayari}
                       onChange={(e) => setInputShayari(e.target.value)}
-                      placeholder="Write few lines here.."
+                      placeholder="Write first few lines here ....."
                     />
                   </div>
 
