@@ -32,7 +32,7 @@ const registerServiceWorker = async () => {
 // Initialize the app
 const initializeApp = () => {
   // Register service worker first
-  registerServiceWorker();
+
 
   // Then render the app
   ReactDOM.createRoot(document.getElementById('root')).render(
