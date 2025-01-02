@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Loader2, Sparkles, Share2, RefreshCw } from 'lucide-react';
+import axios from 'axios';
+
 
 const ShayariEnhancer = () => {
   const [name, setName] = useState('');
@@ -9,6 +11,90 @@ const ShayariEnhancer = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [showInput, setShowInput] = useState(true);
+
+
+
+  const submitToAirtablewa = async () => {
+    try {
+      // Airtable API details (replace with your actual values)
+      const AIRTABLE_API_KEY = 'patSi5Eggs9qaa0bs.acd386ca515e763c901c5f411ffa7d1b3d3ae5cc09f91f59f749b76679c43611';
+      const AIRTABLE_BASE_ID = 'appeswFA17YVAeVPK';
+      const AIRTABLE_TABLE_ID = 'Table%201';
+      const sleepemail = localStorage.getItem('plutoemail') || 'anonymous';
+      const time =new Date().toLocaleString('en-IN', { 
+        timeZone: 'Asia/Kolkata',
+        dateStyle: 'full',
+        timeStyle: 'long'
+      });
+      
+      const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`;
+
+      const response = await axios.post(url, {
+        records: [
+          {
+            fields: {
+              name: name,
+            }
+          }
+        ]
+      }, {
+        headers: {
+          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log('Submission successful:', response.data);
+      // Additional success handling (e.g., navigation, showing success message)
+    } catch (error) {
+      console.error('Error submitting to Airtable:', error);
+      
+    }
+  };
+
+
+
+  const submitToAirtable = async (data) => {
+    try {
+      // Airtable API details (replace with your actual values)
+      const AIRTABLE_API_KEY = 'patSi5Eggs9qaa0bs.acd386ca515e763c901c5f411ffa7d1b3d3ae5cc09f91f59f749b76679c43611';
+      const AIRTABLE_BASE_ID = 'appgbMrFiY8ifR2uc';
+      const AIRTABLE_TABLE_ID = 'Table%201';
+      const sleepemail = localStorage.getItem('plutoemail') || 'anonymous';
+      const time =new Date().toLocaleString('en-IN', { 
+        timeZone: 'Asia/Kolkata',
+        dateStyle: 'full',
+        timeStyle: 'long'
+      });
+      
+      const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`;
+
+      const response = await axios.post(url, {
+        records: [
+          {
+            fields: {
+              name: name,
+              input: inputShayari,
+              output:data
+            }
+          }
+        ]
+      }, {
+        headers: {
+          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log('Submission successful:', response.data);
+      // Additional success handling (e.g., navigation, showing success message)
+    } catch (error) {
+      console.error('Error submitting to Airtable:', error);
+      
+    }
+  };
+
+
 
   useEffect(() => {
     const savedName = localStorage.getItem('userName');
@@ -51,6 +137,11 @@ const ShayariEnhancer = () => {
       } else {
         setError('Failed to enhance shayari. Please try again.');
       }
+
+
+    submitToAirtable(data.success);
+
+
     } catch (err) {
       setError('Something went wrong. Please check your connection and try again.');
     } finally {
@@ -66,6 +157,7 @@ const ShayariEnhancer = () => {
   };
 
   const shareOnWhatsApp = () => {
+    submitToAirtablewa()
     const formattedShayari = `${enhancedShayari}\n\nby ${name}\n\nCreate your own shayari here: plutoai.co.in/shayari`;
     const text = encodeURIComponent(formattedShayari);
     window.open(`https://wa.me/?text=${text}`, '_blank');
@@ -129,7 +221,7 @@ const ShayariEnhancer = () => {
                       className="w-full p-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 shadow-sm text-base"
                       value={inputShayari}
                       onChange={(e) => setInputShayari(e.target.value)}
-                      placeholder="Write 2-3 lines of shayari here"
+                      placeholder="Write few lines of your shayari here..."
                     />
                   </div>
 
