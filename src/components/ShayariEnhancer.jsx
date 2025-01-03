@@ -194,7 +194,7 @@ const ShayariEnhancer = () => {
               </h1>
               <p className="text-center text-gray-600 mt-2 text-sm sm:text-base">
                 {showInput ? 
-                  'Write first few lines and our app will write the rest of shayari for you.' : 
+                  'Become a professional shayar in 2 minutes' : 
                   'Share these magical words with your friends'}
               </p>
             </div>
