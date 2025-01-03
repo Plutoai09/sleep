@@ -207,7 +207,7 @@ const ShayariEnhancer = () => {
                       htmlFor="input-shayari" 
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Enter Your Shayari
+                      Enter First Two lines of your Shayari
                     </label>
                     <textarea
                       id="input-shayari"
