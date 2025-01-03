@@ -147,7 +147,7 @@ const StoryCompetitionForm = () => {
               {page === 3 && "Share Your Story"}
             </h1>
             <p className="text-sm text-gray-600 mt-1">
-              {page === 1 && "Join our story writing competition and let your imagination soar"}
+              {page === 1 && "Join our story writing competition"}
               {page === 2 && "Help us know about you better"}
               {page === 3 && "Write what your story is about"}
             </p>
@@ -174,10 +174,7 @@ const StoryCompetitionForm = () => {
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
                         <span className="text-gray-700">Prizes worth Rs. 10000</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
-                        <span className="text-gray-700">One submission per participant</span>
-                      </li>
+                    
                     </ul>
                   </div>
                   
