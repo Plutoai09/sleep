@@ -118,7 +118,7 @@ const ShayariEnhancer = () => {
     setError('');
 
     try {
-      const response = await fetch('https://shayariv3-199193976935.us-east1.run.app/api/shayari', {
+      const response = await fetch('https://plutoshayar5-199193976935.us-east1.run.app/api/shayari', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
