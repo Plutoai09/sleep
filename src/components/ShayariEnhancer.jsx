@@ -152,7 +152,7 @@ const ShayariEnhancer = () => {
 
   const shareOnWhatsApp = () => {
     submitToAirtablewa();
-    const formattedShayari = `${enhancedShayari}\n\nby ${name}\n\n*Write professional shayari in 2 mins with:* plutoai.co.in/shayar`;
+    const formattedShayari = `${enhancedShayari}\n\n~by ${name}\n\n*Write professional shayari in 2 mins with:* plutoai.co.in/shayar`;
     const text = encodeURIComponent(formattedShayari);
     window.open(`https://wa.me/?text=${text}`, '_blank');
   };

@@ -118,7 +118,7 @@ const ShayariEnhancerref = () => {
     setError('');
 
     try {
-      const response = await fetch('https://shayari-199193976935.us-east1.run.app/api/shayari', {
+      const response = await fetch('http://127.0.0.1:5000/api/shayari', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -152,7 +152,7 @@ const ShayariEnhancerref = () => {
 
   const shareOnWhatsApp = () => {
     submitToAirtablewa();
-    const formattedShayari = `${enhancedShayari}\n\nby ${name}\n\n*Write Professional Shayari in 2 mins with:* plutoai.co.in/shayar`;
+    const formattedShayari = `${enhancedShayari}\n\n~by ${name}\n\n*Write Professional Shayari in 2 mins with:* plutoai.co.in/shayar`;
     const text = encodeURIComponent(formattedShayari);
     window.open(`https://wa.me/?text=${text}`, '_blank');
   };
