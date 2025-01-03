@@ -156,7 +156,7 @@ const StoryCompetitionForm = () => {
           <div className="flex-1 overflow-y-auto px-4 py-2">
             <form onSubmit={handleSubmit} className="space-y-4">
               {page === 1 && (
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-xl border border-purple-100">
                     <h3 className="text-lg font-semibold text-purple-800 mb-3 flex items-center gap-2">
                       <Book className="h-5 w-5" /> Competition Guidelines
