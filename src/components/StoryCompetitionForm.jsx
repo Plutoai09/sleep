@@ -3,10 +3,10 @@ import { ChevronRight, ChevronLeft, Send, Book, Pencil, User, CheckCircle, Loade
 import axios from 'axios';
 
 const ThankYouScreen = () => (
-  <div className="min-h-[60vh] flex flex-col items-center justify-center p-8 text-center">
-    <div className="bg-white/90 backdrop-blur shadow-lg rounded-xl p-8 max-w-lg w-full">
-      <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
-      <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
+  <div className="h-[95vh] flex flex-col items-center justify-center p-4">
+    <div className="bg-white/90 backdrop-blur shadow-lg rounded-xl p-6 max-w-lg w-full">
+      <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
+      <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-3">
         Thank You for Your Submission!
       </h2>
       <p className="text-gray-600">
@@ -17,6 +17,7 @@ const ThankYouScreen = () => (
 );
 
 const StoryCompetitionForm = () => {
+  // ... all state and handlers remain the same ...
   const [page, setPage] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -28,6 +29,7 @@ const StoryCompetitionForm = () => {
     storyIdea: ''
   });
 
+  // ... all handlers remain the same ...
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -94,20 +96,20 @@ const StoryCompetitionForm = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 p-0 sm:p-4 md:p-6">
-      <div className="w-full max-w-4xl mx-auto">
+    <div className="h-[98vh] bg-gradient-to-b from-blue-50 to-purple-50 p-2">
+      <div className="h-full w-full max-w-4xl mx-auto flex flex-col">
         {/* Progress Steps - Hidden on smallest screens */}
-        <div className="hidden sm:block mb-8">
+        <div className="hidden sm:block py-3">
           <div className="flex justify-between items-center">
             {[1, 2, 3].map((step) => (
               <div key={step} className="flex flex-col items-center w-1/3">
-                <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center mb-2 
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center mb-1
                   ${page >= step ? 'bg-purple-600 text-white' : 'bg-gray-200'}`}>
-                  {step === 1 && <Book className="h-4 w-4 md:h-5 md:w-5" />}
-                  {step === 2 && <User className="h-4 w-4 md:h-5 md:w-5" />}
-                  {step === 3 && <Pencil className="h-4 w-4 md:h-5 md:w-5" />}
+                  {step === 1 && <Book className="h-4 w-4" />}
+                  {step === 2 && <User className="h-4 w-4" />}
+                  {step === 3 && <Pencil className="h-4 w-4" />}
                 </div>
-                <div className={`text-xs md:text-sm font-medium text-center ${page >= step ? 'text-purple-600' : 'text-gray-500'}`}>
+                <div className={`text-xs font-medium text-center ${page >= step ? 'text-purple-600' : 'text-gray-500'}`}>
                   {step === 1 && "Choose Language"}
                   {step === 2 && "Your Details"}
                   {step === 3 && "Story Idea"}
@@ -126,40 +128,40 @@ const StoryCompetitionForm = () => {
         </div>
 
         {/* Mobile Progress Indicator */}
-        <div className="sm:hidden mb-4 px-4 pt-4">
+        <div className="sm:hidden py-2">
           <div className="flex items-center justify-center space-x-2">
             {[1, 2, 3].map((step) => (
               <div 
                 key={step}
-                className={`w-2.5 h-2.5 rounded-full ${page >= step ? 'bg-purple-600' : 'bg-gray-200'}`}
+                className={`w-2 h-2 rounded-full ${page >= step ? 'bg-purple-600' : 'bg-gray-200'}`}
               />
             ))}
           </div>
         </div>
 
-        <div className="bg-white/90 backdrop-blur shadow-lg sm:shadow-2xl rounded-none sm:rounded-xl overflow-hidden">
-          <div className="text-center pb-4 pt-6 px-4 sm:pt-8 sm:px-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+        <div className="flex-1 bg-white/90 backdrop-blur shadow-lg rounded-xl overflow-hidden flex flex-col">
+          <div className="text-center py-4 px-4">
+            <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
               {page === 1 && "Story Idea Competition"}
               {page === 2 && "Tell Us About Yourself"}
               {page === 3 && "Share Your Story"}
             </h1>
-            <p className="text-sm sm:text-base text-gray-600 mt-2">
+            <p className="text-sm text-gray-600 mt-1">
               {page === 1 && "Join our story writing competition and let your imagination soar"}
               {page === 2 && "Help us know about you better"}
               {page === 3 && "Write what your story is about"}
             </p>
           </div>
 
-          <div className="p-4 sm:p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="flex-1 overflow-y-auto px-4 py-2">
+            <form onSubmit={handleSubmit} className="space-y-4">
               {page === 1 && (
-                <div className="space-y-6">
-                  <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 sm:p-6 rounded-xl border border-purple-100">
-                    <h3 className="text-lg sm:text-xl font-semibold text-purple-800 mb-4 flex items-center gap-2">
+                <div className="space-y-4">
+                  <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-xl border border-purple-100">
+                    <h3 className="text-lg font-semibold text-purple-800 mb-3 flex items-center gap-2">
                       <Book className="h-5 w-5" /> Competition Guidelines
                     </h3>
-                    <ul className="space-y-3 text-sm sm:text-base">
+                    <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
                         <span className="text-gray-700">Submit your story idea in few lines</span>
@@ -179,8 +181,8 @@ const StoryCompetitionForm = () => {
                     </ul>
                   </div>
                   
-                  <div className="bg-white p-4 sm:p-6 rounded-xl border border-gray-100 shadow-sm">
-                    <label className="text-base sm:text-lg font-medium text-gray-900 mb-4 block">Select Your Language</label>
+                  <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                    <label className="text-base font-medium text-gray-900 mb-3 block">Select Your Language</label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {['english', 'hindi'].map((lang) => (
                         <label
@@ -196,7 +198,7 @@ const StoryCompetitionForm = () => {
                             onChange={(e) => handleLanguageChange(e.target.value)}
                             className="sr-only"
                           />
-                          <span className="text-base sm:text-lg capitalize">
+                          <span className="text-base capitalize">
                             {lang}
                           </span>
                         </label>
@@ -207,45 +209,45 @@ const StoryCompetitionForm = () => {
               )}
 
               {page === 2 && (
-                <div className="space-y-6">
-                  <div className="grid gap-6">
+                <div className="space-y-4">
+                  <div className="grid gap-4">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-base sm:text-lg font-medium text-gray-900 block">Full Name</label>
+                      <label htmlFor="name" className="text-base font-medium text-gray-900 block">Full Name</label>
                       <input
                         id="name"
                         name="name"
                         type="text"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="w-full h-11 sm:h-12 px-3 text-base sm:text-lg rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        className="w-full h-10 px-3 text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                         placeholder="Enter your full name"
                         required
                       />
                     </div>
                     
                     <div className="space-y-2">
-                      <label htmlFor="mobile" className="text-base sm:text-lg font-medium text-gray-900 block">Mobile Number</label>
+                      <label htmlFor="mobile" className="text-base font-medium text-gray-900 block">Mobile Number</label>
                       <input
                         id="mobile"
                         name="mobile"
                         type="tel"
                         value={formData.mobile}
                         onChange={handleInputChange}
-                        className="w-full h-11 sm:h-12 px-3 text-base sm:text-lg rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        className="w-full h-10 px-3 text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                         placeholder="Enter your mobile number"
                         required
                       />
                     </div>
                     
                     <div className="space-y-2">
-                      <label htmlFor="age" className="text-base sm:text-lg font-medium text-gray-900 block">Age</label>
+                      <label htmlFor="age" className="text-base font-medium text-gray-900 block">Age</label>
                       <input
                         id="age"
                         name="age"
                         type="number"
                         value={formData.age}
                         onChange={handleInputChange}
-                        className="w-full h-11 sm:h-12 px-3 text-base sm:text-lg rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                        className="w-full h-10 px-3 text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                         placeholder="Enter your age"
                         required
                       />
@@ -255,12 +257,12 @@ const StoryCompetitionForm = () => {
               )}
 
               {page === 3 && (
-                <div className="space-y-6">
-                  <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 sm:p-6 rounded-xl border border-purple-100">
-                    <h3 className="text-lg sm:text-xl font-semibold text-purple-800 mb-4 flex items-center gap-2">
+                <div className="space-y-4">
+                  <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-xl border border-purple-100">
+                    <h3 className="text-lg font-semibold text-purple-800 mb-3 flex items-center gap-2">
                       <Info className="h-5 w-5" /> Story Submission Guidelines
                     </h3>
-                    <ul className="space-y-3 text-sm sm:text-base">
+                    <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
                         <span className="text-gray-700">Tell us what is the story about in few lines</span>
@@ -277,7 +279,7 @@ const StoryCompetitionForm = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="storyIdea" className="text-base sm:text-lg font-medium text-gray-900 block">
+                    <label htmlFor="storyIdea" className="text-base font-medium text-gray-900 block">
                       Your Story Idea
                     </label>
                     <textarea
@@ -285,26 +287,27 @@ const StoryCompetitionForm = () => {
                       name="storyIdea"
                       value={formData.storyIdea}
                       onChange={handleInputChange}
-                      className="w-full min-h-[200px] sm:min-h-[300px] text-base sm:text-lg p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent leading-relaxed resize-y"
+                      className="w-full h-40 text-base p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent leading-relaxed resize-none"
                       placeholder="Once upon a time..."
                       required
                     />
+                    <div className="text-sm text-gray-500">
+                      Write your story in {formData.language === 'hindi' ? 'Hindi' : 'English'}. Be creative and engaging!
+                    </div>
                   </div>
-
-                
                 </div>
               )}
             </form>
           </div>
 
-          <div className="p-4 sm:p-8 border-t border-gray-100 bg-gray-50/50">
-            <div className="flex justify-between items-center max-w-4xl mx-auto">
+          <div className="p-4 border-t border-gray-100 bg-gray-50/50">
+            <div className="flex justify-between items-center">
               {page > 1 && (
                 <button
                   type="button"
                   onClick={() => setPage(page - 1)}
                   disabled={isSubmitting}
-                  className="flex items-center gap-2 h-10 sm:h-12 px-4 sm:px-6 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 h-10 px-4 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <ChevronLeft className="h-4 w-4" /> Back
                 </button>
@@ -315,7 +318,7 @@ const StoryCompetitionForm = () => {
                   type="button"
                   onClick={() => setPage(page + 1)}
                   disabled={page === 1 ? !canProceedToPage2 : !canProceedToPage3}
-                  className={`flex items-center gap-2 h-10 sm:h-12 px-4 sm:px-6 rounded-lg font-medium ml-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-colors
+                  className={`flex items-center gap-2 h-10 px-4 rounded-lg font-medium ml-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-colors
                     ${page === 1 ? (!canProceedToPage2 ? 'opacity-50 cursor-not-allowed' : '') : (!canProceedToPage3 ? 'opacity-50 cursor-not-allowed' : '')}`}
                 >
                   Next <ChevronRight className="h-4 w-4" />
@@ -327,7 +330,7 @@ const StoryCompetitionForm = () => {
                   type="submit"
                   onClick={handleSubmit}
                   disabled={!formData.storyIdea || isSubmitting}
-                  className={`flex items-center gap-2 h-10 sm:h-12 px-4 sm:px-6 rounded-lg font-medium ml-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-colors
+                  className={`flex items-center gap-2 h-10 px-4 rounded-lg font-medium ml-auto bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white transition-colors
                     ${(!formData.storyIdea || isSubmitting) ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   {isSubmitting ? (
