@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Loader2, Sparkles, Share2, RefreshCw } from 'lucide-react';
 import axios from 'axios';
 
-const ShayariEnhancer = () => {
+const ShayariEnhancerref = () => {
   const [name, setName] = useState('');
   const [showNameInput, setShowNameInput] = useState(true);
   const [inputShayari, setInputShayari] = useState('');
@@ -49,7 +49,7 @@ const ShayariEnhancer = () => {
   const submitToAirtable = async (data) => {
     try {
       const AIRTABLE_API_KEY = 'patSi5Eggs9qaa0bs.acd386ca515e763c901c5f411ffa7d1b3d3ae5cc09f91f59f749b76679c43611';
-      const AIRTABLE_BASE_ID = 'appgbMrFiY8ifR2uc';
+      const AIRTABLE_BASE_ID = 'appSJkD4qV7haYmq7';
       const AIRTABLE_TABLE_ID = 'Table%201';
       const sleepemail = localStorage.getItem('plutoemail') || 'anonymous';
       const time = new Date().toLocaleString('en-IN', { 
@@ -152,7 +152,7 @@ const ShayariEnhancer = () => {
 
   const shareOnWhatsApp = () => {
     submitToAirtablewa();
-    const formattedShayari = `${enhancedShayari}\n\nby ${name}\n\n*Write professional shayari in 2 mins with:* plutoai.co.in/shayar`;
+    const formattedShayari = `${enhancedShayari}\n\nby ${name}\n\n*Write Professional Shayari in 2 mins with:* plutoai.co.in/shayar`;
     const text = encodeURIComponent(formattedShayari);
     window.open(`https://wa.me/?text=${text}`, '_blank');
   };
@@ -283,4 +283,4 @@ const ShayariEnhancer = () => {
   );
 };
 
-export default ShayariEnhancer;
+export default ShayariEnhancerref;

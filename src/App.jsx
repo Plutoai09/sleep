@@ -22,12 +22,14 @@ import ShayariEnhancer from "./components/ShayariEnhancer";
 import AppLaunch from "./components/AppLaunch";
 import Player from "./components/Player";
 import { Home } from "lucide-react";
+import ShayariEnhancerref from "./components/ShayariEnhancerref";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<OnboardingFlow />} />
+        <Route path="/shayar" element={<ShayariEnhancerref />} />
         <Route path="/shayari" element={<ShayariEnhancer />} />
         <Route path="/home" element={<OnboardingFlow />} />
         <Route path="/update" element={<ConversationInterface />} />
