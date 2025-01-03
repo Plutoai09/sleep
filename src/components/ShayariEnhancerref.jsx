@@ -242,6 +242,27 @@ const ShayariEnhancerref = () => {
                       </>
                     )}
                   </button>
+
+                  <div className="mt-6 space-y-3 bg-purple-50 p-4 rounded-xl">
+  <h3 className="font-medium text-purple-800 text-center">How to use it:</h3>
+  <ol className="space-y-2 text-gray-700">
+    <li className="flex items-start gap-2">
+      <span className="font-bold text-purple-700">1.</span>
+      <span>Likhe bas 2 line apni shayari ki</span>
+    </li>
+    <li className="flex items-start gap-2">
+      <span className="font-bold text-purple-700">2.</span>
+      <span>Hamara app usko banadega ek proper professional shayari</span>
+    </li>
+    <li className="flex items-start gap-2">
+      <span className="font-bold text-purple-700">3.</span>
+      <span>Share karein apne doston ke saath</span>
+    </li>
+  </ol>
+</div>
+
+
+
                 </>
               ) : (
                 <div className="space-y-4">
