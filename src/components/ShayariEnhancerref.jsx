@@ -190,7 +190,7 @@ const ShayariEnhancerref = () => {
           <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl p-4 sm:p-8 border border-white/20">
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl font-bold text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                {showInput ? 'Shayari Enhancer' : '✨ Your Enhanced Shayari Is Ready!'}
+                {showInput ? 'Shayari Enhancer' : '✨ Your Shayari is Ready!'}
               </h1>
               <p className="text-center text-gray-600 mt-2 text-sm sm:text-base">
                 {showInput ? 
