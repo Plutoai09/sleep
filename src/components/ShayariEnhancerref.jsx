@@ -248,15 +248,15 @@ const ShayariEnhancerref = () => {
   <ol className="space-y-2 text-gray-700">
     <li className="flex items-start gap-2">
       <span className="font-bold text-purple-700">1.</span>
-      <span>Likhe bas 2 line apni shayari ki</span>
+      <span>Write 2 lines of your shayari</span>
     </li>
     <li className="flex items-start gap-2">
       <span className="font-bold text-purple-700">2.</span>
-      <span>Hamara app usko banadega ek proper professional shayari</span>
+      <span>Our app will convert it into Professional Shayari</span>
     </li>
     <li className="flex items-start gap-2">
       <span className="font-bold text-purple-700">3.</span>
-      <span>Share karein apne doston ke saath</span>
+      <span>Share shayari with your friends</span>
     </li>
   </ol>
 </div>
