@@ -96,7 +96,7 @@ const StoryCompetitionForm = () => {
   }
 
   return (
-    <div className="h-[98vh] bg-gradient-to-b from-blue-50 to-purple-50 p-2">
+    <div className="h-[75vh] bg-gradient-to-b from-blue-50 to-purple-50 p-2">
       <div className="h-full w-full max-w-4xl mx-auto flex flex-col">
         {/* Progress Steps - Hidden on smallest screens */}
         <div className="hidden sm:block py-3">
