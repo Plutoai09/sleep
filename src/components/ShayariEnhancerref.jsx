@@ -10,6 +10,7 @@ const ShayariEnhancerref = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [showInput, setShowInput] = useState(true);
+  const outputRef = useRef(null);
 
   const submitToAirtablewa = async () => {
     try {
@@ -106,7 +107,6 @@ const ShayariEnhancerref = () => {
       return;
     }
 
-    // Count words by splitting on whitespace and filtering out empty strings
     const wordCount = inputShayari.trim().split(/\s+/).filter(word => word.length > 0).length;
     
     if (wordCount < 8) {
@@ -130,6 +130,11 @@ const ShayariEnhancerref = () => {
       if (data.success) {
         setEnhancedShayari(data.success);
         setShowInput(false);
+        // Scroll to top after state updates
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          outputRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
       } else {
         setError('Failed to enhance shayari. Please try again.');
       }
@@ -152,7 +157,7 @@ const ShayariEnhancerref = () => {
 
   const shareOnWhatsApp = () => {
     submitToAirtablewa();
-    const formattedShayari = `${enhancedShayari}\n\n~by ${name}\n\n*Write Professional Shayari in 2 mins with:* plutoai.co.in/shayar`;
+    const formattedShayari = `${enhancedShayari}\n\n~by ${name}\n\n*Write professional shayari in 2 mins with:* plutoai.co.in/shayar`;
     const text = encodeURIComponent(formattedShayari);
     window.open(`https://wa.me/?text=${text}`, '_blank');
   };
@@ -190,7 +195,7 @@ const ShayariEnhancerref = () => {
           <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl p-4 sm:p-8 border border-white/20">
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl font-bold text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                {showInput ? 'Shayari Enhancer' : '✨ Your Shayari is Ready!'}
+                {showInput ? 'Shayari Enhancer' : '✨ Your Shayari Is Ready!'}
               </h1>
               <p className="text-center text-gray-600 mt-2 text-sm sm:text-base">
                 {showInput ? 
@@ -207,7 +212,7 @@ const ShayariEnhancerref = () => {
                       htmlFor="input-shayari" 
                       className="block text-sm font-medium text-gray-700"
                     >
-                     Enter First Two lines of your Shayari
+                      Enter First Two lines of your Shayari
                     </label>
                     <textarea
                       id="input-shayari"
@@ -244,28 +249,25 @@ const ShayariEnhancerref = () => {
                   </button>
 
                   <div className="mt-6 space-y-3 bg-purple-50 p-4 rounded-xl">
-  <h3 className="font-medium text-purple-800 text-center">How to use it:</h3>
-  <ol className="space-y-2 text-gray-700">
-    <li className="flex items-start gap-2">
-      <span className="font-bold text-purple-700">1.</span>
-      <span>Write 2 lines of your shayari</span>
-    </li>
-    <li className="flex items-start gap-2">
-      <span className="font-bold text-purple-700">2.</span>
-      <span>Our app will convert it into Professional Shayari</span>
-    </li>
-    <li className="flex items-start gap-2">
-      <span className="font-bold text-purple-700">3.</span>
-      <span>Share shayari with your friends</span>
-    </li>
-  </ol>
-</div>
-
-
-
+                    <h3 className="font-medium text-purple-800 text-center">How to use it:</h3>
+                    <ol className="space-y-2 text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="font-bold text-purple-700">1.</span>
+                        <span>Write 2 lines of your shayari</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="font-bold text-purple-700">2.</span>
+                        <span>Our app will convert it into Professional Shayari</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="font-bold text-purple-700">3.</span>
+                        <span>Share shayari with your friends</span>
+                      </li>
+                    </ol>
+                  </div>
                 </>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-4" ref={outputRef}>
                   <div className="p-4 sm:p-6 bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl shadow-inner">
                     {enhancedShayari.split('\n').map((line, index) => (
                       <p key={index} className="text-gray-800 text-base sm:text-lg leading-relaxed break-words">
