@@ -20,17 +20,11 @@ const AirtableLookup = () => {
   const airtableUpdate = async () => {
     setButtonLoading(true);
     try {
-      const AIRTABLE_API_KEY = 'patSi5Eggs9qaa0bs.acd386ca515e763c901c5f411ffa7d1b3d3ae5cc09f91f59f749b76679c43611';
-      const AIRTABLE_BASE_ID = 'appgbMrFiY8ifR2uc';
-      const AIRTABLE_TABLE_ID = 'Table%201';
-      const sleepemail = localStorage.getItem('plutoemail') || 'anonymous';
       const time = new Date().toLocaleString('en-IN', { 
         timeZone: 'Asia/Kolkata',
         dateStyle: 'full',
         timeStyle: 'long'
       });
-      
-      const randomID = Math.floor(100000 + Math.random() * 900000);
       
       const url = `https://api.airtable.com/v0/appbWeFHuxI7k8sKO/${AIRTABLE_TABLE_ID}`;
   
@@ -51,15 +45,53 @@ const AirtableLookup = () => {
   
       console.log('Submission successful:', response.data);
       navigate('/shayari');
-      return randomID;
     } catch (error) {
       console.error('Error submitting to Airtable:', error);
       navigate('/shayari');
-      throw error;
     }
   };
 
-  // ... rest of the existing code ...
+  // ... rest of the existing fetch code ...
+
+  const containerStyle = {
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f5f5f5',
+    padding: '20px'
+  };
+
+  const cardStyle = {
+    padding: '40px',
+    maxWidth: '600px',
+    width: '90%',
+    margin: '20px auto',
+    border: '1px solid #e0e0e0',
+    borderRadius: '16px',
+    backgroundColor: '#fff',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    position: 'relative'
+  };
+
+  const shayariStyle = {
+    fontFamily: 'Georgia, serif',
+    fontSize: '1.2rem',
+    lineHeight: '1.8',
+    color: '#2d3748',
+    textAlign: 'center',
+    marginBottom: '20px',
+    fontStyle: 'italic'
+  };
+
+  const authorStyle = {
+    textAlign: 'right',
+    color: '#718096',
+    fontSize: '1rem',
+    marginTop: '20px',
+    fontFamily: 'Arial, sans-serif'
+  };
 
   const buttonStyle = {
     backgroundColor: buttonLoading ? '#818cf8' : '#4f46e5',
@@ -82,25 +114,17 @@ const AirtableLookup = () => {
     opacity: buttonLoading ? 0.8 : 1
   };
 
-  const spinnerStyle = {
-    width: '20px',
-    height: '20px',
-    border: '3px solid #ffffff',
-    borderTop: '3px solid transparent',
+  const loadingDotsStyle = {
+    display: 'inline-block',
+    width: '16px',
+    height: '16px',
     borderRadius: '50%',
-    animation: 'spin 1s linear infinite',
-    marginRight: '10px',
-    display: buttonLoading ? 'block' : 'none'
+    backgroundColor: 'white',
+    marginRight: '8px',
+    opacity: buttonLoading ? 1 : 0,
+    transform: 'scale(0.75)',
+    transition: 'all 0.2s'
   };
-
-  // Add keyframes for spinner animation
-  const styleSheet = document.styleSheets[0];
-  styleSheet.insertRule(`
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  `, styleSheet.cssRules.length);
 
   return (
     <div style={containerStyle}>
@@ -133,7 +157,7 @@ const AirtableLookup = () => {
           onMouseOver={(e) => !buttonLoading && (e.target.style.backgroundColor = '#4338ca')}
           onMouseOut={(e) => !buttonLoading && (e.target.style.backgroundColor = '#4f46e5')}
         >
-          <div style={spinnerStyle}></div>
+          {buttonLoading && <span style={loadingDotsStyle} />}
           {buttonLoading ? 'Creating...' : 'Create your own shayari in 2 mins'}
         </button>
       </div>
