@@ -38,7 +38,7 @@ const AirtableLookup = () => {
         records: [
           {
             fields: {
-             
+             name: 'test',
               ID: recordId // Convert to string as Airtable might expect string values
             }
           }
