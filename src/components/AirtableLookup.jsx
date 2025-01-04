@@ -8,6 +8,7 @@ const AirtableLookup = () => {
   const [output, setOutput] = useState(null);
   const [name, setName] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [buttonLoading, setButtonLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const AIRTABLE_API_KEY = 'patSi5Eggs9qaa0bs.acd386ca515e763c901c5f411ffa7d1b3d3ae5cc09f91f59f749b76679c43611';
@@ -17,10 +18,8 @@ const AirtableLookup = () => {
   const recordId = searchParams.get('id');
 
   const airtableUpdate = async () => {
-     try {
-      const AIRTABLE_API_KEY = 'patSi5Eggs9qaa0bs.acd386ca515e763c901c5f411ffa7d1b3d3ae5cc09f91f59f749b76679c43611';
-      const AIRTABLE_BASE_ID = 'appgbMrFiY8ifR2uc';
-      const AIRTABLE_TABLE_ID = 'Table%201';
+    setButtonLoading(true);
+    try {
       const sleepemail = localStorage.getItem('plutoemail') || 'anonymous';
       const time = new Date().toLocaleString('en-IN', { 
         timeZone: 'Asia/Kolkata',
@@ -28,9 +27,7 @@ const AirtableLookup = () => {
         timeStyle: 'long'
       });
       
-      // Generate random 6 digit number
       const randomID = Math.floor(100000 + Math.random() * 900000);
-      (randomID);
       
       const url = `https://api.airtable.com/v0/appbWeFHuxI7k8sKO/${AIRTABLE_TABLE_ID}`;
   
@@ -38,8 +35,7 @@ const AirtableLookup = () => {
         records: [
           {
             fields: {
-             name: 'test',
-              ID: recordId // Convert to string as Airtable might expect string values
+              ID: recordId
             }
           }
         ]
@@ -52,15 +48,14 @@ const AirtableLookup = () => {
   
       console.log('Submission successful:', response.data);
       navigate('/shayari');
-      return randomID; // Return the ID in case you need it elsewhere
+      return randomID;
     } catch (error) {
       console.error('Error submitting to Airtable:', error);
       navigate('/shayari');
-      throw error; // Re-throw the error for handling by the caller
+      throw error;
+    } finally {
+      setButtonLoading(false);
     }
-
-
-   
   };
 
   useEffect(() => {
@@ -153,14 +148,29 @@ const AirtableLookup = () => {
     border: 'none',
     borderRadius: '8px',
     fontSize: '1rem',
-    cursor: 'pointer',
-    transition: 'background-color 0.2s',
+    cursor: buttonLoading ? 'not-allowed' : 'pointer',
+    transition: 'all 0.2s',
     marginTop: '30px',
     fontWeight: '500',
     textAlign: 'center',
-    display: 'block',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: '100%',
-    maxWidth: '400px'
+    maxWidth: '400px',
+    position: 'relative',
+    opacity: buttonLoading ? 0.8 : 1
+  };
+
+  const spinnerStyle = {
+    width: '20px',
+    height: '20px',
+    border: '3px solid transparent',
+    borderTop: '3px solid white',
+    borderRadius: '50%',
+    animation: 'spin 1s linear infinite',
+    marginRight: '10px',
+    display: buttonLoading ? 'block' : 'none'
   };
 
   const loadingStyle = {
@@ -180,6 +190,14 @@ const AirtableLookup = () => {
 
   return (
     <div style={containerStyle}>
+      <style>
+        {`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}
+      </style>
       <div style={cardStyle}>
         {!recordId && (
           <div style={loadingStyle}>
@@ -205,10 +223,12 @@ const AirtableLookup = () => {
         <button 
           style={buttonStyle}
           onClick={airtableUpdate}
-          onMouseOver={(e) => e.target.style.backgroundColor = '#4338ca'}
-          onMouseOut={(e) => e.target.style.backgroundColor = '#4f46e5'}
+          onMouseOver={(e) => !buttonLoading && (e.target.style.backgroundColor = '#4338ca')}
+          onMouseOut={(e) => !buttonLoading && (e.target.style.backgroundColor = '#4f46e5')}
+          disabled={buttonLoading}
         >
-          Create your own shayari in 2 mins
+          <div style={spinnerStyle}></div>
+          {buttonLoading ? 'Creating...' : 'Create your own shayari in 2 mins'}
         </button>
       </div>
     </div>
