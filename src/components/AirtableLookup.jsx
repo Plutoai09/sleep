@@ -53,6 +53,49 @@ const AirtableLookup = () => {
 
   // ... rest of the existing fetch code ...
 
+  useEffect(() => {
+    if (!recordId) {
+      setError('No ID provided in URL parameters');
+      return;
+    }
+
+    const fetchRecord = async () => {
+      setLoading(true);
+      setError(null);
+      
+      try {
+        const response = await fetch(
+          `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}?filterByFormula={ID}="${recordId}"`,
+          {
+            headers: {
+              'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch data from Airtable');
+        }
+
+        const data = await response.json();
+        
+        if (data.records && data.records.length > 0) {
+          setOutput(data.records[0].fields.output);
+          setName(data.records[0].fields.name || 'Anonymous');
+        } else {
+          setError('No record found with the specified ID');
+        }
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRecord();
+  }, [recordId]);
+
   const containerStyle = {
     minHeight: '100vh',
     display: 'flex',
