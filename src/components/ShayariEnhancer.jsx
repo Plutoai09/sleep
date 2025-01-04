@@ -4,6 +4,8 @@ import axios from 'axios';
 
 const ShayariEnhancer = () => {
   const [name, setName] = useState('');
+  const [id, setId] = useState('');
+
   const [showNameInput, setShowNameInput] = useState(true);
   const [inputShayari, setInputShayari] = useState('');
   const [enhancedShayari, setEnhancedShayari] = useState('');
@@ -59,8 +61,12 @@ const ShayariEnhancer = () => {
         timeStyle: 'long'
       });
       
+      // Generate random 6 digit number
+      const randomID = Math.floor(100000 + Math.random() * 900000);
+      setId(randomID);
+      
       const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`;
-
+  
       const response = await axios.post(url, {
         records: [
           {
@@ -68,7 +74,8 @@ const ShayariEnhancer = () => {
               name: name,
               input: inputShayari,
               output: data,
-              time: time
+              time: time,
+              ID: randomID // Convert to string as Airtable might expect string values
             }
           }
         ]
@@ -78,10 +85,12 @@ const ShayariEnhancer = () => {
           'Content-Type': 'application/json'
         }
       });
-
+  
       console.log('Submission successful:', response.data);
+      return randomID; // Return the ID in case you need it elsewhere
     } catch (error) {
       console.error('Error submitting to Airtable:', error);
+      throw error; // Re-throw the error for handling by the caller
     }
   };
 
@@ -157,7 +166,7 @@ const ShayariEnhancer = () => {
 
   const shareOnWhatsApp = () => {
     submitToAirtablewa();
-    const formattedShayari = `${enhancedShayari}\n\n~by ${name}\n\n*Write professional shayari in 2 mins with:* plutoai.co.in/shayar`;
+    const formattedShayari = `*Checkout my shayari here:* plutoai.co.in/look?id=${id}`;
     const text = encodeURIComponent(formattedShayari);
     window.open(`https://wa.me/?text=${text}`, '_blank');
   };

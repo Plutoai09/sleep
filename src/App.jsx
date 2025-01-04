@@ -24,6 +24,7 @@ import Player from "./components/Player";
 import { Home } from "lucide-react";
 import ShayariEnhancerref from "./components/ShayariEnhancerref";
 import StoryCompetitionForm from "./components/StoryCompetitionForm";
+import AirtableLookup from "./components/AirtableLookup";
 
 
 
@@ -33,6 +34,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<OnboardingFlow />} />
+        <Route path="/look" element={<AirtableLookup />} />
         <Route path="/story" element={<StoryCompetitionForm />} />
         <Route path="/shayar" element={<ShayariEnhancerref />} />
         <Route path="/shayari" element={<ShayariEnhancer />} />
