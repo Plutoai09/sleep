@@ -38,7 +38,7 @@ function App() {
         <Route path="/story" element={<StoryCompetitionForm />} />
         <Route path="/shayar" element={<ShayariEnhancerref />} />
         <Route path="/shayari" element={<ShayariEnhancer />} />
-        <Route path="/home" element={<OnboardingFlow />} />
+        <Route path="/home" element={<ShayariEnhancer  />} />
         <Route path="/update" element={<ConversationInterface />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<Loginyt />} />
