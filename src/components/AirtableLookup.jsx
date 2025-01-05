@@ -102,55 +102,42 @@ const AirtableLookup = () => {
   }, [recordId]);
 
   const containerStyle = {
-    height: '95vh',
+    minHeight: '100vh',
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#f5f5f5',
-    padding: '0 20px',
-    overflow: 'hidden'
+    padding: '20px'
   };
 
   const cardStyle = {
-    padding: '24px',
-    width: '90%',
+    padding: '40px',
     maxWidth: '600px',
-    maxHeight: '80vh',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    width: '90%',
+    margin: '20px auto',
     border: '1px solid #e0e0e0',
     borderRadius: '16px',
     backgroundColor: '#fff',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    overflow: 'hidden'
-  };
-
-  const contentWrapperStyle = {
-    flex: '1',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    minHeight: 0
+    position: 'relative'
   };
 
   const shayariStyle = {
     fontFamily: 'Georgia, serif',
-    fontSize: 'clamp(1rem, 4vh, 1.5rem)',
-    lineHeight: '1.4',
+    fontSize: '1rem',
+    lineHeight: '1.8',
     color: '#2d3748',
     textAlign: 'center',
-    margin: '0 0 12px 0',
-    fontStyle: 'italic',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis'
+    marginBottom: '20px',
+    fontStyle: 'italic'
   };
 
   const authorStyle = {
     textAlign: 'right',
     color: '#718096',
-    fontSize: 'clamp(0.875rem, 2vh, 1rem)',
-    marginTop: '8px',
+    fontSize: '1rem',
+    marginTop: '20px',
     fontFamily: 'Arial, sans-serif'
   };
 
@@ -160,10 +147,10 @@ const AirtableLookup = () => {
     padding: '12px 24px',
     border: 'none',
     borderRadius: '8px',
-    fontSize: 'clamp(0.875rem, 2vh, 1rem)',
+    fontSize: '1rem',
     cursor: buttonLoading ? 'not-allowed' : 'pointer',
     transition: 'all 0.2s',
-    marginTop: '16px',
+    marginTop: '30px',
     fontWeight: '500',
     textAlign: 'center',
     display: 'flex',
@@ -172,8 +159,7 @@ const AirtableLookup = () => {
     width: '100%',
     maxWidth: '400px',
     position: 'relative',
-    opacity: buttonLoading ? 0.8 : 1,
-    alignSelf: 'center'
+    opacity: buttonLoading ? 0.8 : 1
   };
 
   const spinnerStyle = {
@@ -187,21 +173,19 @@ const AirtableLookup = () => {
     display: buttonLoading ? 'block' : 'none'
   };
 
-  const messageStyle = {
+  const loadingStyle = {
     textAlign: 'center',
     color: '#666',
-    padding: '12px',
-    fontSize: 'clamp(0.875rem, 2vh, 1rem)'
+    padding: '20px'
   };
 
   const errorStyle = {
     color: '#dc2626',
     textAlign: 'center',
-    padding: '12px',
+    padding: '20px',
     backgroundColor: '#fee2e2',
     borderRadius: '8px',
-    margin: '12px 0',
-    fontSize: 'clamp(0.875rem, 2vh, 1rem)'
+    margin: '20px 0'
   };
 
   return (
@@ -216,13 +200,13 @@ const AirtableLookup = () => {
       </style>
       <div style={cardStyle}>
         {!recordId && (
-          <div style={messageStyle}>
+          <div style={loadingStyle}>
             Please provide an ID in the URL parameters (e.g., ?id=1225544)
           </div>
         )}
 
         {loading && (
-          <div style={messageStyle}>Loading your shayari...</div>
+          <div style={loadingStyle}>Loading your shayari...</div>
         )}
         
         {error && (
@@ -230,10 +214,10 @@ const AirtableLookup = () => {
         )}
         
         {output && (
-          <div style={contentWrapperStyle}>
+          <>
             <div style={shayariStyle}>{output}</div>
             <div style={authorStyle}>- {name}</div>
-          </div>
+          </>
         )}
 
         <button 
