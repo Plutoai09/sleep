@@ -33,7 +33,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<OnboardingFlow />} />
+        <Route path="/" element={<ShayariEnhancer />} />
         <Route path="/look" element={<AirtableLookup />} />
         <Route path="/story" element={<StoryCompetitionForm />} />
         <Route path="/shayar" element={<ShayariEnhancerref />} />
