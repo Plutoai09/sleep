@@ -311,6 +311,122 @@ const ShayariEnhancer = () => {
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+      <div className="max-w-4xl mx-auto px-4 pb-16">
+        <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl p-8 space-y-8">
+          <h2 className="text-2xl font-bold text-center bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+            AI-Powered Shayari Creator: Express Your Emotions
+          </h2>
+          
+          <div className="space-y-6 text-gray-700">
+            <p className="leading-relaxed">
+              Welcome to the future of shayari creation! Our AI-powered tool helps you craft beautiful romantic shayari, love poetry, and meaningful verses in Hindi, Urdu, and English. Whether you're looking for romantic shayari for your loved one or want to express your thoughts through attitude shayari, our platform makes it effortless.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-lg font-semibold text-purple-700 mb-3">Popular Shayari Categories</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-600">♥️</span>
+                    <span>Romantic Shayari in Hindi - Express your love in beautiful words</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-600">✨</span>
+                    <span>Love Shayari - Perfect for sharing with your special someone</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-600">🌟</span>
+                    <span>Two Line Shayari - Concise and impactful expressions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-600">📝</span>
+                    <span>Urdu Shayari - Classic poetic expressions</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-purple-700 mb-3">Why Choose Our Shayari Maker</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-600">⚡</span>
+                    <span>Create professional shayari in just 2 minutes</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-600">🎯</span>
+                    <span>Multiple language support: Hindi, English, and Urdu</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-600">💫</span>
+                    <span>Perfect for both romantic and attitude shayari</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-600">🔄</span>
+                    <span>Generate unlimited variations</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="border-t border-gray-200 pt-6">
+              <h3 className="text-lg font-semibold text-purple-700 mb-4">Popular Shayari Styles</h3>
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="p-4 bg-purple-50 rounded-lg">
+                  <h4 className="font-medium mb-2">Love Shayari in Hindi</h4>
+                  <p className="text-sm text-gray-600">Perfect for expressing deep emotions and romantic feelings</p>
+                </div>
+                <div className="p-4 bg-purple-50 rounded-lg">
+                  <h4 className="font-medium mb-2">Punjabi Shayari</h4>
+                  <p className="text-sm text-gray-600">Heartfelt expressions in the beautiful Punjabi language</p>
+                </div>
+                <div className="p-4 bg-purple-50 rounded-lg">
+                  <h4 className="font-medium mb-2">Sad Shayari</h4>
+                  <p className="text-sm text-gray-600">Express your deepest emotions and feelings</p>
+                </div>
+                <div className="p-4 bg-purple-50 rounded-lg">
+                  <h4 className="font-medium mb-2">Attitude Shayari</h4>
+                  <p className="text-sm text-gray-600">Show your confident and bold side</p>
+                </div>
+                <div className="p-4 bg-purple-50 rounded-lg">
+                  <h4 className="font-medium mb-2">Dosti Shayari</h4>
+                  <p className="text-sm text-gray-600">Celebrate the beauty of friendship</p>
+                </div>
+                <div className="p-4 bg-purple-50 rounded-lg">
+                  <h4 className="font-medium mb-2">Love Poetry in Urdu</h4>
+                  <p className="text-sm text-gray-600">Classic romantic expressions in Urdu</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-sm text-gray-600">
+              <p>
+                Our AI-powered shayari generator helps you create beautiful verses in multiple languages including Hindi, Urdu, and English. Whether you're looking for romantic shayari, love quotes, or attitude shayari, our tool makes it easy to express your feelings. Perfect for sharing on social media or with your loved ones.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
     </div>
   );
 };
