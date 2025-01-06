@@ -3,6 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import "./ui/ripple.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { Home } from "lucide-react"; // Add Home icon import
+import NamePopup from './NamePopup';
+
+
 
 
 import PWAInstallPrompt from"./PWAInstallPrompt.jsx";
@@ -94,6 +97,8 @@ const Plutofm = () => {
   const [audioSrc, setAudioSrc] = useState("");
   const [imageSrc, setImageSrc] = useState("");
   const [authorImageSrc, setAuthorImageSrc] = useState("");
+  const [userName, setUserName] = useState('');
+
   const [authorName, setAuthorName] = useState("");
   const [persona, setPersona] = useState("");
   const [error, setError] = useState("");
@@ -129,6 +134,10 @@ const [duration, setDuration] = useState(0);
     }
   };
 
+  const handleNameSubmit = (name) => {
+    setUserName(name);
+    // You can use the name here for any additional logic
+  };
 
 
 
@@ -498,9 +507,9 @@ useEffect(() => {
         records: [
           {
             fields: {
-              email: sleepemail,
+              email: localStorage.getItem('plutoName') ,
               time: timea,
-              chapter: localStorage.getItem('title')
+              chapter: 'Murder Mystery'
              
             }
           }
@@ -1056,7 +1065,8 @@ useEffect(() => {
   ];
 
   return (
-    
+    <>
+  <NamePopup onClose={handleNameSubmit} />
     <div className="fixed inset-0 flex items-center justify-center bg-[#060f1c] min-h-[100dvh]">
      
       {isLoading ? (
@@ -1315,6 +1325,7 @@ useEffect(() => {
           </div>
         )}
       </div>
+      </>
       );
     };
     export default Plutofm;
