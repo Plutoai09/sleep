@@ -1062,7 +1062,7 @@ useEffect(() => {
       {isLoading ? (
         <LoadingSkeleton />
       ) : (
-        <div className="w-full h-[100dvh] sm:h-[900px] sm:max-h-[90vh] sm:max-w-[375px] bg-[#0a192f] rounded-[40px] shadow-xl overflow-hidden flex flex-col relative">
+        <div className="w-full h-[100dvh] sm:h-[900px] sm:max-h-[90vh] sm:max-w-[375px] bg-[#00000] rounded-[40px] shadow-xl overflow-hidden flex flex-col relative">
           {/* Author Image - Positioned above book image */}
 
       
