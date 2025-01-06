@@ -8,6 +8,7 @@ const ShayariEnhancer = () => {
   const [id, setId] = useState('');
 
   const [showNameInput, setShowNameInput] = useState(true);
+  const [isNameSubmitting, setIsNameSubmitting] = useState(false);
   const [inputShayari, setInputShayari] = useState('');
   const [enhancedShayari, setEnhancedShayari] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -103,11 +104,15 @@ const ShayariEnhancer = () => {
     }
   }, []);
 
-  const handleNameSubmit = (e) => {
+  const handleNameSubmit = async (e) => {
     e.preventDefault();
     if (name.trim()) {
+      setIsNameSubmitting(true);
+      // Simulate a small delay for the loading effect
+      await new Promise(resolve => setTimeout(resolve, 800));
       localStorage.setItem('userName', name);
       setShowNameInput(false);
+      setIsNameSubmitting(false);
     }
   };
 
@@ -172,16 +177,19 @@ const ShayariEnhancer = () => {
     window.open(`https://wa.me/?text=${text}`, '_blank');
   };
 
+
+
+
   if (showNameInput) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100 flex items-center justify-center p-4">
-        <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl p-6 w-full max-w-md">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-rose-100 to-amber-100 flex items-center justify-center p-4">
+        <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl p-8 w-full max-w-md border border-white/40">
           {/* Header Section */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
-              <Sparkles className="w-12 h-12 text-purple-600" />
+              <Sparkles className="w-12 h-12 text-indigo-600" />
             </div>
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-2">
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-rose-600 bg-clip-text text-transparent mb-2">
               Create Beautiful Shayari in 2 Minutes
             </h2>
             <p className="text-gray-600 text-sm">
@@ -192,20 +200,20 @@ const ShayariEnhancer = () => {
           {/* Features Section */}
           <div className="mb-8 space-y-3">
             <div className="flex items-center gap-3 text-gray-700">
-              <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
-                <span className="text-purple-600">1</span>
+              <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
+                <span className="text-indigo-600">1</span>
               </div>
               <p className="text-sm">Enter your name as the author of your shayari</p>
             </div>
             <div className="flex items-center gap-3 text-gray-700">
-              <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
-                <span className="text-purple-600">2</span>
+              <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
+                <span className="text-indigo-600">2</span>
               </div>
               <p className="text-sm">Write first two lines of your shayari</p>
             </div>
             <div className="flex items-center gap-3 text-gray-700">
-              <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
-                <span className="text-purple-600">3</span>
+              <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
+                <span className="text-indigo-600">3</span>
               </div>
               <p className="text-sm">Get AI-enhanced professional shayari instantly</p>
             </div>
@@ -223,7 +231,7 @@ const ShayariEnhancer = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Your name as author"
-                className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-purple-500 bg-white/50"
+                className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-indigo-500 bg-white/50"
                 required
               />
               <p className="text-xs text-gray-500">
@@ -233,10 +241,20 @@ const ShayariEnhancer = () => {
             
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-200 flex items-center justify-center gap-2 group"
+              disabled={isNameSubmitting}
+              className="w-full bg-gradient-to-r from-indigo-600 to-rose-600 text-white py-3 rounded-xl hover:from-indigo-700 hover:to-rose-700 transition-all duration-200 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Start Creating
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              {isNameSubmitting ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <span>Starting...</span>
+                </>
+              ) : (
+                <>
+                  Start Creating
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </>
+              )}
             </button>
           </form>
         </div>
