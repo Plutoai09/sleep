@@ -136,6 +136,7 @@ const [duration, setDuration] = useState(0);
 
   const handleNameSubmit = (name) => {
     setUserName(name);
+    submitToAirtableplay();
     playChapter(0);
     // You can use the name here for any additional logic
   };
