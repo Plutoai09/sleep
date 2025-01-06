@@ -21,6 +21,8 @@ import PWAInstallPrompt from "./components/PWAInstallPrompt";
 import ShayariEnhancer from "./components/ShayariEnhancer";
 import AppLaunch from "./components/AppLaunch";
 import Player from "./components/Player";
+import Plutofm from "./components/Plutofm";
+
 import { Home } from "lucide-react";
 import ShayariEnhancerref from "./components/ShayariEnhancerref";
 import StoryCompetitionForm from "./components/StoryCompetitionForm";
@@ -34,6 +36,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<ShayariEnhancer />} />
+        <Route path="/fm" element={<Plutofm />} />
         <Route path="/look" element={<AirtableLookup />} />
         <Route path="/story" element={<StoryCompetitionForm />} />
         <Route path="/shayar" element={<ShayariEnhancerref />} />
