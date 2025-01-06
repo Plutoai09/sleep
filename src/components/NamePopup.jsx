@@ -47,7 +47,7 @@ const NamePopup = ({ onClose }) => {
           </div>
         </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-6 text-center">
           <h2 className="text-xl font-bold bg-gradient-to-r from-[#64ffda] via-white to-[#1d3557] bg-clip-text text-transparent">
            Enter your name to continue
           </h2>
