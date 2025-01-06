@@ -531,6 +531,50 @@ useEffect(() => {
   };
 
 
+  
+  const submitToAirtableplay = async () => {
+   
+    try {
+      // Airtable API details (replace with your actual values)
+      const AIRTABLE_API_KEY = 'patjMEDpIrbYfYwdl.5737f5b2149f1a8fdee16c24ab19839045c73dabaae2b478863ab0dfd3715be4';
+      const AIRTABLE_BASE_ID = 'appRebn2Pps59B3Nu';
+      const AIRTABLE_TABLE_ID = 'Table%201';
+      const timing =new Date().toLocaleString('en-IN', { 
+        timeZone: 'Asia/Kolkata',
+        dateStyle: 'full',
+        timeStyle: 'long'
+      });
+      
+      const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`;
+
+      const response = await axios.post(url, {
+        records: [
+          {
+            fields: {
+              email: localStorage.getItem('plutoName') ,
+              time: timing,
+              chapter: 'Murder Mystery'
+             
+            }
+          }
+        ]
+      }, {
+        headers: {
+          'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log('Submission successful:', response.data);
+      // Additional success handling (e.g., navigation, showing success message)
+    } catch (error) {
+      console.error('Error submitting to Airtable:', error);
+      
+    }
+  };
+
+
+
 
 
 
@@ -760,6 +804,7 @@ useEffect(() => {
   };
 
   const togglePlayPause = () => {
+    submitToAirtableplay();
     if (audioElement) {
       if (isPlaying) {
         audioElement.pause();
@@ -874,11 +919,14 @@ useEffect(() => {
   const playChapter = async (index) => {
     // If the requested chapter is the current chapter and it's already loaded
     if (currentChapter === index && audioElement) {
+
+    
       // If the audio is paused, start playing
       if (audioElement.paused) {
         try {
           await audioElement.play();
           setIsPlaying(true);
+         
           return;
         } catch (error) {
           console.error("Failed to play current chapter:", error);
