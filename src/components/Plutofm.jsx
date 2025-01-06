@@ -1170,7 +1170,7 @@ useEffect(() => {
           <div className="px-2 mt-4">
         
             <div className="flex justify-between items-center">
-              <h2 className="text-lg font-semibold text-white">Secret Book Murder</h2>
+              <h2 className="text-lg font-semibold text-white">Perfect Murder</h2>
               <div 
                 onClick={handleSupportClick}
                 className="cursor-pointer px-2 py-1 rounded-full flex items-center justify-center bg-[#1d3557]"
