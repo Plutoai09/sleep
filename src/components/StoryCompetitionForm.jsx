@@ -147,7 +147,7 @@ const StoryCompetitionForm = () => {
               {page === 3 && "Share Your Story Idea"}
             </h1>
             <p className="text-sm text-gray-600 mt-1">
-              {page === 1 && "Submit your details and hear back from us in 48 hpurs"}
+              {page === 1 && "Submit your details and hear back from us in 48 hours"}
               {page === 2 && "Help us know about you better"}
               {page === 3 && "Write what your story is about"}
             </p>
