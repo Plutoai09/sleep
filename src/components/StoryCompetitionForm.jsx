@@ -10,7 +10,7 @@ const ThankYouScreen = () => (
         Thank You for Your Submission!
       </h2>
       <p className="text-gray-600">
-        Your story has been successfully submitted to our competition. We will reach out to shortlisted participants!
+        You have joined the waitlist.We will evaluate your idea and reach out to you with Yes or No in next 48 hours.
       </p>
     </div>
   </div>
@@ -142,12 +142,12 @@ const StoryCompetitionForm = () => {
         <div className="flex-1 bg-white/90 backdrop-blur shadow-lg rounded-xl overflow-hidden flex flex-col">
           <div className="text-center py-4 px-4">
             <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              {page === 1 && "Story Idea Competition"}
+              {page === 1 && "Join the Waitlist"}
               {page === 2 && "Tell Us About Yourself"}
-              {page === 3 && "Share Your Story"}
+              {page === 3 && "Share Your Story Idea"}
             </h1>
             <p className="text-sm text-gray-600 mt-1">
-              {page === 1 && "Join our story writing competition"}
+              {page === 1 && "Submit your details and hear back from us in 48hrs"}
               {page === 2 && "Help us know about you better"}
               {page === 3 && "Write what your story is about"}
             </p>
@@ -159,7 +159,7 @@ const StoryCompetitionForm = () => {
                 <div className="space-y-3">
                   <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-xl border border-purple-100">
                     <h3 className="text-lg font-semibold text-purple-800 mb-3 flex items-center gap-2">
-                      <Book className="h-5 w-5" /> Competition Guidelines
+                      <Book className="h-5 w-5" /> Selection Process
                     </h3>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
@@ -172,7 +172,7 @@ const StoryCompetitionForm = () => {
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
-                        <span className="text-gray-700">Prizes worth Rs. 10000</span>
+                        <span className="text-gray-700">Hear back from us in next 48 hours</span>
                       </li>
                     
                     </ul>
@@ -288,9 +288,7 @@ const StoryCompetitionForm = () => {
                       placeholder="Once upon a time..."
                       required
                     />
-                    <div className="text-sm text-gray-500">
-                      Write your story in {formData.language === 'hindi' ? 'Hindi' : 'English'}. Be creative and engaging!
-                    </div>
+                  
                   </div>
                 </div>
               )}
