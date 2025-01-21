@@ -18,6 +18,9 @@ const ThankYouScreen = () => (
 
 const StoryCompetitionForm = () => {
   // ... all state and handlers remain the same ...
+
+
+  
   const [page, setPage] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,6 +47,20 @@ const StoryCompetitionForm = () => {
       language: value
     }));
   };
+
+  useEffect(() => {
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    fbq('init', '1749283992588246');
+    fbq('track', 'PageView');
+  }, []);
 
   const submitToAirtable = async () => {
     try {
