@@ -22,7 +22,7 @@ import ShayariEnhancer from "./components/ShayariEnhancer";
 import AppLaunch from "./components/AppLaunch";
 import Player from "./components/Player";
 import Plutofm from "./components/Plutofm";
-
+import Waitlist from "./components/Waitlist";
 import { Home } from "lucide-react";
 import ShayariEnhancerref from "./components/ShayariEnhancerref";
 import StoryCompetitionForm from "./components/StoryCompetitionForm";
@@ -62,6 +62,7 @@ function App() {
         <Route path="/onboarding" element={<OnboardingFlow/>} />
         <Route path="/install" element={<PWAInstallPrompt/>} />
         <Route path="/app" element={<AppLaunch/>} />
+        <Route path="/waitlist" element={<Waitlist/>} />
       </Routes>
     </Router>
   );
