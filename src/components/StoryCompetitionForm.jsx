@@ -314,7 +314,7 @@ const StoryCompetitionForm = () => {
                       value={formData.storyIdea}
                       onChange={handleInputChange}
                       className="w-full h-40 text-base p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent leading-relaxed resize-none"
-                      placeholder="Once upon a time..."
+                      placeholder="Describe your story in less than 100 words"
                       required
                     />
                   
