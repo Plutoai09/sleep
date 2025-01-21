@@ -295,8 +295,8 @@ const StoryCompetitionForm = () => {
             </form>
           </div>
 
-          <div className="p-4 border-t border-gray-100 bg-gray-50/50">
-            <div className="flex justify-between items-center">
+          <div className="px-4 pt-4 pb-8 border-t border-gray-100 bg-gray-50/50">
+          <div className="flex justify-between items-center">
               {page > 1 && (
                 <button
                   type="button"
