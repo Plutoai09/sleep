@@ -159,12 +159,12 @@ const StoryCompetitionForm = () => {
                 <div className="space-y-3">
                   <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-xl border border-purple-100">
                     <h3 className="text-lg font-semibold text-purple-800 mb-3 flex items-center gap-2">
-                      <Book className="h-5 w-5" /> Selection Process
+                      <Book className="h-5 w-5" /> Invite Criteria
                     </h3>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
-                        <span className="text-gray-700">Submit your story idea in few lines</span>
+                        <span className="text-gray-700">Invitations will be sent on a rolling basis, based on quality of your story idea</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
@@ -172,7 +172,7 @@ const StoryCompetitionForm = () => {
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
-                        <span className="text-gray-700">Hear back from us in next 48 hours</span>
+                        <span className="text-gray-700">Hear back from us in the next 48 hours</span>
                       </li>
                     
                     </ul>
