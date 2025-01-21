@@ -159,7 +159,7 @@ const StoryCompetitionForm = () => {
                 <div className="space-y-3">
                   <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-xl border border-purple-100">
                     <h3 className="text-lg font-semibold text-purple-800 mb-3 flex items-center gap-2">
-                      <Book className="h-5 w-5" /> Invite Criteria
+                      <Book className="h-5 w-5" /> Invitation Criteria
                     </h3>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
