@@ -450,6 +450,7 @@ const learningCategories = [  {
     navigate('/artofconversation');
   };
 
+
   const CategoryGrid = ({ items, sectionTitle, sectionSubheading }) => (
     <div className="space-y-6">
       <div className="space-y-1">
@@ -458,35 +459,37 @@ const learningCategories = [  {
           <p className="text-sm text-gray-400 pl-1">{sectionSubheading}</p>
         )}
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="flex overflow-x-auto pb-6 -mx-4 px-4 space-x-4 scrollbar-hide">
         {items.map((category) => (
-          <div key={category.id} className="flex flex-col items-center space-y-3">
-            <button
-              onClick={() => handleCategorySelect(category)}
-              className="group relative aspect-square w-full overflow-hidden rounded-xl bg-gray-800 border border-gray-700 hover:border-gray-600 shadow-md shadow-gray-900/50 hover:shadow-xl hover:shadow-gray-900/70 transition-all"
-            >
-              <div className="relative h-full w-full">
-                <div className="aspect-square w-full overflow-hidden rounded-lg bg-gray-900">
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    className="h-full w-full object-cover transition-transform group-hover:scale-105 opacity-90 group-hover:opacity-100"
-                  />
+          <div key={category.id} className="flex-none w-40">
+            <div className="flex flex-col items-center space-y-3">
+              <button
+                onClick={() => handleCategorySelect(category)}
+                className="group relative w-full overflow-hidden rounded-xl bg-gray-800 border border-gray-700 hover:border-gray-600 shadow-md shadow-gray-900/50 hover:shadow-xl hover:shadow-gray-900/70 transition-all aspect-square"
+              >
+                <div className="relative h-full w-full">
+                  <div className="h-full w-full overflow-hidden rounded-lg bg-gray-900">
+                    <img
+                      src={category.image}
+                      alt={category.title}
+                      className="h-full w-full object-cover transition-transform group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                    />
+                  </div>
                 </div>
+              </button>
+              <div className="flex items-center space-x-2">
+                <span className="font-medium text-gray-300 text-xs">{category.title}</span>
               </div>
-            </button>
-            <div className="flex items-center space-x-2">
-              <span className="font-medium text-gray-300 text-xs">{category.title}</span>
             </div>
           </div>
         ))}
       </div>
     </div>
   );
-
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 to-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {showPersonaQuestions ? (
           // Persona Questions Section
           <div className="max-w-3xl mx-auto space-y-8">
