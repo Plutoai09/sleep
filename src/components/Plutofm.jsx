@@ -1151,7 +1151,7 @@ useEffect(() => {
             </div>
   
             {/* Book Image Section - Adjusted height */}
-            <div className="relative w-full pt-[24vh] pt-8">
+            <div className="relative w-full pt-[24vh] mt-2">
             <div className="absolute inset-0 flex justify-center items-center">
   <img 
     src="/images/perfectmurder.png" 
