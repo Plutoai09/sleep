@@ -4,10 +4,6 @@ import "./ui/ripple.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { Home } from "lucide-react"; // Add Home icon import
 import NamePopup from './NamePopup';
-
-
-
-
 import PWAInstallPrompt from"./PWAInstallPrompt.jsx";
 import ElevenLabsConversationyt from "./ElevenLabsConversationyt.jsx";
 import axios from 'axios';
@@ -1155,16 +1151,19 @@ useEffect(() => {
             </div>
   
             {/* Book Image Section - Adjusted height */}
-            <div className="relative w-full pt-[24vh]">
-  <div className="absolute inset-0 flex justify-center items-center">
-    <img 
-      src="/images/perfectmurder.png" 
-      alt="Space Background" 
-      className={`w-52 h-52 rounded-2xl object-contain opacity-100 transition-all duration-300 ${
-        isAnswerPlaying ? "filter blur-sm" : ""
-      }`}
-    />
-  </div>
+            <div className="relative w-full pt-[24vh] pt-8">
+            <div className="absolute inset-0 flex justify-center items-center">
+  <img 
+    src="/images/perfectmurder.png" 
+    alt="Space Background" 
+    className={`w-64 h-64 object-contain opacity-100 transition-all duration-300 ${
+      isAnswerPlaying ? "filter blur-sm" : ""
+    }`}
+    style={{
+      borderRadius: '1.5rem'
+    }}
+  />
+</div>
 </div>
   
             {/* Book Details and Support Section */}
