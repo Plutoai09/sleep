@@ -4,6 +4,10 @@ import "./ui/ripple.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { Home } from "lucide-react"; // Add Home icon import
 import NamePopup from './NamePopup';
+
+
+
+
 import PWAInstallPrompt from"./PWAInstallPrompt.jsx";
 import ElevenLabsConversationyt from "./ElevenLabsConversationyt.jsx";
 import axios from 'axios';
@@ -221,11 +225,7 @@ const [duration, setDuration] = useState(0);
         const audioBooks = [
           
           { title: 'Perfect Murder', url:  'https://storage.googleapis.com/plutoai/PerfectMurder.mp3' },
-          { title: 'Perfect Murder', url:  'https://storage.googleapis.com/plutoai/PerfectMurder.mp3' },
-          { title: 'Perfect Murder', url:  'https://storage.googleapis.com/plutoai/PerfectMurder.mp3' },
-          { title: 'Perfect Murder', url:  'https://storage.googleapis.com/plutoai/PerfectMurder.mp3' },
-          { title: 'Perfect Murder', url:  'https://storage.googleapis.com/plutoai/PerfectMurder.mp3' },
-          { title: 'Perfect Murder', url:  'https://storage.googleapis.com/plutoai/PerfectMurder.mp3' },
+          { title: 'Perfect Murder', url:  'https://storage.googleapis.com/plutoai/PerfectMurder.mp3' }
           
         ];
         
@@ -251,10 +251,9 @@ const [duration, setDuration] = useState(0);
         const imagesToPreload = [
           data.imageSrc,
           data.authorImageSrc,
-          "/images/bg.png",
-           "/images/sleep.jpg",
-           "/images/star.webp",
-          "/images/bg.png" // Preload video as well
+      
+           "/images/hoh.webp",
+         // Preload video as well
         ].filter(Boolean);
 
         await preloadImages(imagesToPreload);
@@ -1118,85 +1117,120 @@ useEffect(() => {
 
   return (
     <>
-      <NamePopup onClose={handleNameSubmit} />
-      <div className="fixed inset-0 flex items-center justify-center bg-[#060f1c] min-h-[100dvh]">
-        {isLoading ? (
-          <LoadingSkeleton />
-        ) : (
-          <div className="w-full h-[100dvh] sm:h-[900px] sm:max-h-[90vh] sm:max-w-[375px] bg-[#00000] rounded-[40px] shadow-xl overflow-hidden flex flex-col relative">
-            {/* Author Image - Positioned above book image */}
-            <div
-              className={`absolute top-4 left-1/2 transform -translate-x-1/2 ${
-                !isModalOpen ? "z-10" : ""
-              }`}
-            >
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20">
-                {isAnswerPlaying &&
-                  rippleElements.map((ripple, index) => (
-                    <div
-                      key={index}
-                      className="absolute rounded-full border border-[#64ffda]"
-                      style={{
-                        animation: `ripple ${ripple.duration} ease-out ${ripple.delay} infinite`,
-                        width: "120%",
-                        height: "120%",
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                        opacity: 0.7,
-                      }}
-                    />
-                  ))}
+    <NamePopup onClose={handleNameSubmit} />
+    <div className="fixed inset-0 flex items-center justify-center bg-black min-h-[100dvh]">
+      {isLoading ? (
+        <LoadingSkeleton />
+      ) : (
+        <div className="w-full h-[100dvh] sm:h-[900px] sm:max-h-[90vh] sm:max-w-[375px] bg-black rounded-[40px] shadow-xl overflow-hidden flex flex-col relative">
+          {/* Author Image - Positioned above book image */}
+          <div
+            className={`absolute top-4 left-1/2 transform -translate-x-1/2 ${
+              !isModalOpen ? "z-10" : ""
+            }`}
+          >
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20">
+              {isAnswerPlaying &&
+                rippleElements.map((ripple, index) => (
+                  <div
+                    key={index}
+                    className="absolute rounded-full border border-gray-500"
+                    style={{
+                      animation: `ripple ${ripple.duration} ease-out ${ripple.delay} infinite`,
+                      width: "120%",
+                      height: "120%",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      opacity: 0.7,
+                    }}
+                  />
+                ))}
+            </div>
+          </div>
+  
+          {/* Book Image Section - Adjusted height */}
+          <div className="relative w-full pt-[35vh]">
+            <div className="absolute inset-0">
+              <img 
+                src="/images/hoh.webp" 
+                alt="Space Background" 
+                className={`absolute inset-0 w-full h-full object-cover opacity-100  transition-all duration-300 ${
+                  isAnswerPlaying ? "filter blur-sm" : ""
+                }`}
+              />
+            </div>
+          </div>
+  
+          {/* Controls Section */}
+          <div className="px-2 mt-4">
+            <div className="flex justify-between items-center">
+              <h2 className="text-lg font-semibold text-white">Perfect Murder</h2>
+              <div 
+                onClick={handleSupportClick}
+                className="cursor-pointer px-2 py-1 rounded-full flex items-center justify-center bg-gray-800"
+              >
+                <span className="text-[10px] text-white">Support</span>
               </div>
             </div>
+            <p className="text-xs text-gray-400">▷ 2.5M Plays •<span className="text-yellow-200 ml-2">4.5★</span></p>
+          </div>
   
-            {/* Book Image Section - Adjusted height */}
-            <div className="relative w-full pt-[24vh] mt-2">
-            <div className="absolute inset-0 flex justify-center items-center">
-  <img 
-    src="/images/perfectmurder.png" 
-    alt="Space Background" 
-    className={`w-64 h-64 object-contain opacity-100 transition-all duration-300 ${
-      isAnswerPlaying ? "filter blur-sm" : ""
-    }`}
-    style={{
-      borderRadius: '1.5rem'
-    }}
-  />
-</div>
-</div>
+          {/* Tabs */}
+          <div className="flex border-b border-gray-800 mt-4">
+            <button
+              className={`flex-1 py-2 text-sm font-medium ${
+                activeTab === 'controls'
+                  ? 'text-white border-b-2 border-white'
+                  : 'text-gray-500'
+              }`}
+              onClick={() => setActiveTab('controls')}
+            >
+              Player
+            </button>
   
-            {/* Book Details and Support Section */}
-            <div className="px-2 mt-2 pt-4">
-              <div className="flex justify-between items-center">
-                <h2 className="text-base font-semibold text-white">Perfect Murder</h2>
-                <div 
-                  onClick={handleSupportClick}
-                  className="cursor-pointer px-2 py-1 rounded-full flex items-center justify-center bg-[#1d3557]"
-                >
-                  <span className="text-[10px] text-white">Support</span>
-                </div>
-              </div>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                  Chapter: 
+            <button
+              className={`flex-1 py-2 text-sm font-medium ${
+                activeTab === 'chapters'
+                  ? 'text-white border-b-2 border-white'
+                  : 'text-gray-500'
+              }`}
+              onClick={() => setActiveTab('chapters')}
+            >
+              Episodes
+            </button>
+  
+            <button
+              className={`flex-1 py-2 text-sm font-medium ${
+                activeTab === 'writer'
+                  ? 'text-white border-b-2 border-white'
+                  : 'text-gray-500'
+              }`}
+              onClick={() => setActiveTab('writer')}
+            >
+              Writer
+            </button>
+          </div>
+  
+          {/* Tab Content */}
+          {activeTab === 'controls' && (
+            <div className="p-4 h-[75vh] overflow-y-auto">
+              <div className="text-left mb-4 mt-[2vh]">
+                <p className="text-sm text-gray-400 leading-relaxed">
+                  Episode : 
                   <span className="text-white font-semibold ml-2">
                     {chapters[currentChapter]?.title || `Chapter ${currentChapter + 1}`}
                   </span>
                 </p>
-            </div>
-  
-            {/* Player Controls Section */}
-            <div className="px-4 ">
-              
-  
+              </div>
+            
               {isChapterLoading ? (
-                <div className="flex flex-col items-center justify-center space-y-4">
-                  <div className="animate-spin rounded-full h-8 w-8 border-2 border-[#64ffda] border-t-transparent"/>
+                <div className="flex flex-col items-center justify-center space-y-4 mt-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-2 border-white border-t-transparent"/>
                   <p className="text-xs text-gray-400">Loading chapter, no compromise with audio quality...</p>
                 </div>
               ) : (
                 <>
-                  {/* Progress Bar */}
                   <div className="flex items-center mt-[3vh]">
                     <span className="text-xs text-gray-400 w-12 text-right">
                       {formatTime(currentTime)}
@@ -1204,25 +1238,25 @@ useEffect(() => {
                     
                     <div
                       ref={progressBarRef}
-                      className="flex-grow mx-2 h-3 bg-gray-700 rounded-full cursor-pointer relative"
+                      className="flex-grow mx-2 h-3 bg-gray-800 rounded-full cursor-pointer relative"
                       onMouseDown={handleProgressBarInteraction}
                       onTouchStart={handleProgressBarInteraction}
                     >
                       {/* Buffered progress */}
                       <div
-                        className="absolute top-0 left-0 h-3 bg-gray-600 rounded-full"
+                        className="absolute top-0 left-0 h-3 bg-gray-700 rounded-full"
                         style={{ width: `${loadedProgress}%` }}
                       />
                       
                       {/* Playback progress */}
                       <div
-                        className="absolute top-0 left-0 h-3 bg-[#64ffda] rounded-full"
+                        className="absolute top-0 left-0 h-3 bg-white rounded-full"
                         style={{ width: `${(currentTime / duration) * 100}%` }}
                       />
                       
                       {/* Seek handle */}
                       <div
-                        className="absolute w-4 h-4 bg-[#64ffda] rounded-full shadow-md transform -translate-y-1/2"
+                        className="absolute w-4 h-4 bg-white rounded-full shadow-md transform -translate-y-1/2"
                         style={{
                           top: '50%',
                           left: `${(currentTime / duration) * 100}%`,
@@ -1236,7 +1270,6 @@ useEffect(() => {
                     </span>
                   </div>
   
-                  {/* Playback Controls */}
                   <div className="flex justify-center items-center space-x-16 mb-1 mt-4">
                     <div className="flex flex-col items-center">
                       <SkipBack 
@@ -1251,7 +1284,7 @@ useEffect(() => {
                       <button 
                         onClick={togglePlayPause}
                         disabled={isChapterLoading}
-                        className={`w-12 h-12 bg-[#1d3557] rounded-full flex items-center justify-center text-white shadow-md transition-shadow mb-2 border-2 border-[#64ffda] ${
+                        className={`w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white shadow-md transition-shadow mb-2 border-2 border-white ${
                           !isChapterLoading ? 'hover:shadow-lg' : 'opacity-50 cursor-not-allowed'
                         }`}
                       >
@@ -1276,101 +1309,113 @@ useEffect(() => {
                 </>
               )}
             </div>
+          )}
   
-            {/* Tabs Section */}
-            <div className="flex border-b border-gray-700 mt-4">
-              <button
-                className={`flex-1 py-2 text-sm font-medium ${
-                  activeTab === 'chapters'
-                    ? 'text-blue-600 border-b-2 border-blue-600'
-                    : 'text-gray-500'
-                }`}
-                onClick={() => setActiveTab('chapters')}
-              >
-                Chapters
-              </button>
-            </div>
-  
-            {/* Tab Content */}
-            {activeTab === 'chapters' && (
-              <div className="p-4 h-[65vh] overflow-y-auto custom-scrollbar">
-                {isBuffering && (
-                  <div className="absolute top-0 left-0 right-0 flex justify-center items-center h-1 bg-gray-800">
-                    <div className="h-1 bg-[#64ffda] animate-progress" style={{ width: `${loadedProgress}%` }} />
+          {activeTab === 'chapters' && (
+            <div className="p-4 h-[65vh] overflow-y-auto custom-scrollbar">
+              {chapters
+                .map((chapter, originalIndex) => (
+                  <div
+                    key={originalIndex}
+                    onClick={() => !isChapterLoading && playChapter(originalIndex)}
+                    className={`py-2 sm:py-2.5 border-b border-gray-800 first:border-t ${
+                      currentChapter === originalIndex ? "bg-gray-900" : ""
+                    } cursor-pointer transition-colors ${isChapterLoading ? "opacity-50 pointer-events-none" : ""}`}
+                  >
+                    <div className="px-2 flex justify-between items-center">
+                      <div>
+                        <p className="text-xs text-gray-500 mb-0.5">
+                          Chapter {originalIndex + 1}
+                        </p>
+                        <p className={`text-sm text-white ${
+                          currentChapter === originalIndex ? "font-bold" : ""
+                        }`}>
+                          {chapter.title || `Chapter ${originalIndex + 1}`}
+                        </p>
+                      </div>
+                      {isChapterLoading && currentChapter === originalIndex && (
+                        <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"/>
+                      )}
+                    </div>
                   </div>
-                )}
+                ))}
+            </div>
+          )}
   
-                {(() => {
-                  const { listA, listB } = getChapterFilterLists(persona);
-          
-                  return chapters
-                    .map((chapter, originalIndex) => ({ chapter, originalIndex }))
-                    .filter(({ originalIndex }) => !listA.includes(originalIndex))
-                    .map(({ chapter, originalIndex }, filteredIndex) => {
-                      const chapterToPlay = listB.includes(filteredIndex + 1) 
-                        ? originalIndex - 1 
-                        : originalIndex;
-          
-                        return (
-                          <div
-                            key={originalIndex}
-                            onClick={() => !isChapterLoading && playChapter(chapterToPlay)}
-                            className={`py-2 sm:py-2.5 border-b border-gray-700 first:border-t ${
-                              currentChapter === originalIndex ? "bg-[#1d2536]" : ""
-                            } cursor-pointer transition-colors ${isChapterLoading ? "opacity-50 pointer-events-none" : ""}`}
-                          >
-                            <div className="px-2 flex justify-between items-center">
-                              <div>
-                                <p className="text-xs text-gray-500 mb-0.5">
-                                  Chapter {filteredIndex + 1}
-                                </p>
-                                <p className={`text-sm text-white ${
-                                  currentChapter === originalIndex ? "font-bold" : ""
-                                }`}>
-                                  {chapter.title || `Chapter ${filteredIndex + 1}`}
-                                </p>
-                              </div>
-                              {isChapterLoading && currentChapter === originalIndex && (
-                                <div className="animate-spin rounded-full h-4 w-4 border-2 border-[#64ffda] border-t-transparent"/>
-                              )}
-                            </div>
-                          </div>
-                        );
-                    })
-                })()}
+          {activeTab === 'writer' && (
+            <div className="p-4 h-[65vh] overflow-y-auto text-white">
+              <div className="flex flex-col items-center mb-6">
+                <div className="w-24 h-24 rounded-full bg-gray-800 mb-4 overflow-hidden">
+                  <img 
+                    src="/images/hoh.webp" 
+                    alt="Zaid" 
+                    className="w-full h-full object-cover "
+                  />
+                </div>
+                <h2 className="text-xl font-bold text-white">Zaid Saifi</h2>
+                <p className="text-sm text-gray-400">Mystery & Thriller Author</p>
               </div>
-            )}
   
-            {/* Custom Scrollbar and Ripple Styles */}
-            <style jsx>{`
-              .custom-scrollbar::-webkit-scrollbar {
-                width: 6px;
+              <div className="space-y-4 px-2">
+                <div>
+                  <h3 className="text-md font-semibold mb-2 text-white">About</h3>
+                  <p className="text-sm text-gray-300 leading-relaxed">
+                    Zaid Saifi is an emerging talent in the mystery and thriller genre. 
+                    With a keen eye for intricate plot developments and psychological depth, 
+                    he crafts narratives that keep readers on the edge of their seats.
+                  </p>
+                </div>
+  
+                <div>
+                  <h3 className="text-md font-semibold mb-2 text-white">Background</h3>
+                  <p className="text-sm text-gray-300 leading-relaxed">
+                    Trained in creative writing, Zaid has a background in criminology 
+                    which heavily influences his storytelling. His debut novel "Perfect Murder" 
+                    showcases his ability to weave complex narratives with unexpected twists.
+                  </p>
+                </div>
+  
+                <div>
+                  <h3 className="text-md font-semibold mb-2 text-white">Works</h3>
+                  <ul className="text-sm text-gray-300 space-y-1 list-disc pl-4">
+                    <li>Perfect Murder (Current Audiobook)</li>
+                    <li>Shadows of Deception (Upcoming)</li>
+                    <li>The Silent Witness (Planned)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+  
+          <style jsx>{`
+            .custom-scrollbar::-webkit-scrollbar {
+              width: 6px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-track {
+              background: transparent;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb {
+              background-color: rgba(255,255,255,0.2);
+              border-radius: 10px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+              background-color: rgba(255,255,255,0.3);
+            }
+  
+            @keyframes ripple {
+              0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0.7;
               }
-              .custom-scrollbar::-webkit-scrollbar-track {
-                background: transparent;
+              100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
               }
-              .custom-scrollbar::-webkit-scrollbar-thumb {
-                background-color: rgba(100,255,218,0.2);
-                border-radius: 10px;
-              }
-              .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                background-color: rgba(100,255,218,0.3);
-              }
-      
-              @keyframes ripple {
-                0% {
-                  transform: translate(-50%, -50%) scale(0);
-                  opacity: 0.7;
-                }
-                100% {
-                  transform: translate(-50%, -50%) scale(2);
-                  opacity: 0;
-                }
-              }
-            `}</style>
-          </div>
-        )}
-      </div>
+            }
+          `}</style>
+        </div>
+      )}
+    </div>
     </>
   );
     };
