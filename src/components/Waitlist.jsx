@@ -193,7 +193,7 @@ const Waitlist = () => {
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
-                        <span className="text-gray-700">Winners will be shortlisted based on the quality of story plot</span>
+                        <span className="text-gray-700">Winners will be shortlisted basis the quality of story plot</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
