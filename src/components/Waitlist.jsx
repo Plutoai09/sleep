@@ -171,7 +171,7 @@ const Waitlist = () => {
         <div className="flex-1 bg-white/90 backdrop-blur shadow-lg rounded-xl overflow-hidden flex flex-col">
           <div className="text-center py-4 px-4">
             <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-              {page === 1 && "Join the Waitlist"}
+              {page === 1 && "Join the Competition"}
               {page === 2 && "Tell Us About Yourself"}
               {page === 3 && "Share Your Story Idea"}
             </h1>
@@ -188,12 +188,12 @@ const Waitlist = () => {
                 <div className="space-y-3">
                   <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-xl border border-purple-100">
                     <h3 className="text-lg font-semibold text-purple-800 mb-3 flex items-center gap-2">
-                      <Book className="h-5 w-5" /> Invitation Criteria
+                      <Book className="h-5 w-5" /> Selection Criteria
                     </h3>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
-                        <span className="text-gray-700">Invitations will be sent on a rolling basis, based on quality of your story idea</span>
+                        <span className="text-gray-700">Winners will be shortlisted based on the quality of story plot</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
