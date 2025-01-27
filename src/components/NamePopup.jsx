@@ -100,7 +100,7 @@ const NamePopup = ({ onClose }) => {
               type="number"
               value={mobileNumber}
               onChange={(e) => setMobileNumber(e.target.value)}
-              placeholder="Your Registered Number"
+              placeholder="Registered Number"
               className="w-full bg-gray-800 text-white px-3 py-2 rounded-md"
               required
             />
