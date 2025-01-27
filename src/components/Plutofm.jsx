@@ -223,7 +223,7 @@ const [duration, setDuration] = useState(0);
         
         const audioBooks = [
 
-          { title: 'Premium Pass Overview', url:  'https://storage.googleapis.com/plutoai/intro%20hostel%20of%20shadows.mp3' },
+          { title: 'Intro to Pluto Premium', url:  'https://storage.googleapis.com/plutoai/intro%20hostel%20of%20shadows.mp3' },
            { title: 'The Night of Shadows', url:  'https://storage.googleapis.com/plutoai/Horror%20hostel%20main%20ep%201.mp3' }, 
           { title: 'Vultures are out', url:  'https://storage.googleapis.com/plutoai/Horror%20Hostel%20Main%20Ep2.mp3' },
           { title: 'Who is Subhash', url:  'https://storage.googleapis.com/plutoai/Hostel%20of%20Horror%20Main%20ep%203.mp3' },
