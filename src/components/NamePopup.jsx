@@ -92,7 +92,7 @@ const NamePopup = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/50">
       <div className="bg-gray-900 p-6 rounded-lg w-80 text-white">
-        <h2 className="text-xl font-bold mb-4 text-center">Login to start listening</h2>
+        <h2 className="text-xl font-bold mb-4 text-center">Premium Access</h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
