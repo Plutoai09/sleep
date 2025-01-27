@@ -134,14 +134,12 @@ const [duration, setDuration] = useState(0);
     }
   };
 
-  const handleNameSubmit = (name) => {
-    setUserName(name);
+  const handleNameSubmit = (mobileNumber) => {
+    console.log('Received mobile number:', mobileNumber);
+    setUserName(mobileNumber);
     submitToAirtableplay();
     playChapter(0);
-    // You can use the name here for any additional logic
   };
-
-
 
   const handleNextChaptermain = () => {
     if (currentChapter < chapters.length - 1) {
@@ -224,8 +222,14 @@ const [duration, setDuration] = useState(0);
 
         const audioBooks = [
           
-          { title: 'Perfect Murder', url:  'https://storage.googleapis.com/plutoai/PerfectMurder.mp3' },
-          { title: 'Perfect Murder', url:  'https://storage.googleapis.com/plutoai/PerfectMurder.mp3' }
+          { title: 'The Night of Shadows', url:  'https://storage.googleapis.com/plutoai/Horror%20hostel%20main%20ep%201.mp3' },
+          { title: 'Vultures are out', url:  'https://storage.googleapis.com/plutoai/Horror%20Hostel%20Main%20Ep2.mp3' },
+          { title: 'Who is Subhash', url:  'https://storage.googleapis.com/plutoai/Hostel%20of%20Horror%20Main%20ep%203.mp3' },
+          { title: 'Arjuns Secrets', url:  'https://storage.googleapis.com/plutoai/Hostel%20of%20horror%20ep4.mp3' },
+          { title: 'Hitlist is out', url:  'https://storage.googleapis.com/plutoai/Hostel%20of%20Horror%20Main%20Episode%205.mp3' },
+          { title: 'Help Help!', url:  'https://storage.googleapis.com/plutoai/Horror%20hostel%20main%20episode%206.mp3' },
+          { title: 'Hostel of Shadows', url:  'https://storage.googleapis.com/plutoai/Hostel%20of%20Horrro%20Ep%207.mp3' },
+          { title: 'The Finale', url:  'https://storage.googleapis.com/plutoai/Hostel%20of%20Horror%20Episode%208.mp3' }
           
         ];
         
@@ -501,7 +505,7 @@ useEffect(() => {
       const AIRTABLE_API_KEY = 'patGVnCpojLKL6Bd7.5d0dc21c0d5b4ce2b7d00c2620f8a2dcd63b238bc3b1236afa0c8704f40ba927';
       const AIRTABLE_BASE_ID = 'appIHEySY3eMIzNiy';
       const AIRTABLE_TABLE_ID = 'Table%201';
-      const sleepemail = localStorage.getItem('plutoemail') || 'anonymous';
+      const sleepemail = localStorage.getItem('plutoName') || 'anonymous';
      
       
       const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`;
@@ -583,10 +587,10 @@ useEffect(() => {
   const submitToAirtable = async () => {
     try {
       // Airtable API details (replace with your actual values)
-      const AIRTABLE_API_KEY = 'patprnTG99hS6uQWv.b752084329e8723bc5bb5d8ff5abb7850004127579b197cc7ed4236e565f3305';
-      const AIRTABLE_BASE_ID = 'appxGg8YmAsauJHIV';
+      const AIRTABLE_API_KEY = 'pat2o2pRq40bDjBcq.b3872b9fd3cbeedde05f48acb37d0bb417e965cf8787486b72ffaa08ee18c25e';
+      const AIRTABLE_BASE_ID = 'appZSSJeRgZCRFy5u';
       const AIRTABLE_TABLE_ID = 'Table%201';
-      const sleepemail = localStorage.getItem('plutoemail') || 'anonymous';
+      const sleepemail = localStorage.getItem('plutoName') || 'anonymous';
       const time =new Date().toLocaleString('en-IN', { 
         timeZone: 'Asia/Kolkata',
         dateStyle: 'full',
@@ -625,10 +629,10 @@ useEffect(() => {
   const submitToAirtableB = async (index) => {
     try {
       // Airtable API details (replace with your actual values)
-      const AIRTABLE_API_KEY = 'patprnTG99hS6uQWv.b752084329e8723bc5bb5d8ff5abb7850004127579b197cc7ed4236e565f3305';
-      const AIRTABLE_BASE_ID = 'appxGg8YmAsauJHIV';
+      const AIRTABLE_API_KEY = 'pat2o2pRq40bDjBcq.b3872b9fd3cbeedde05f48acb37d0bb417e965cf8787486b72ffaa08ee18c25e';
+      const AIRTABLE_BASE_ID = 'appJNe0Kg81zv93FO';
       const AIRTABLE_TABLE_ID = 'Table%201';
-      const sleepemail = localStorage.getItem('plutoemail') || 'anonymous';
+      const sleepemail = localStorage.getItem('plutoName') || 'anonymous';
       const time =new Date().toLocaleString('en-IN', { 
         timeZone: 'Asia/Kolkata',
         dateStyle: 'full',
@@ -1165,7 +1169,7 @@ useEffect(() => {
           {/* Controls Section */}
           <div className="px-2 mt-4">
             <div className="flex justify-between items-center">
-              <h2 className="text-lg font-semibold text-white">Perfect Murder</h2>
+              <h2 className="text-lg font-semibold text-white">Hostel of Shadows</h2>
               <div 
                 onClick={handleSupportClick}
                 className="cursor-pointer px-2 py-1 rounded-full flex items-center justify-center bg-gray-800"
@@ -1208,7 +1212,7 @@ useEffect(() => {
               }`}
               onClick={() => setActiveTab('writer')}
             >
-              Writer
+              About
             </button>
           </div>
   
@@ -1352,36 +1356,31 @@ useEffect(() => {
                     className="w-full h-full object-cover "
                   />
                 </div>
-                <h2 className="text-xl font-bold text-white">Zaid Saifi</h2>
-                <p className="text-sm text-gray-400">Mystery & Thriller Author</p>
+                <h2 className="text-xl font-bold text-white">Hostel of Shadows</h2>
+                <p className="text-sm text-bold-400">By Arka Mukhopadhyay</p>
               </div>
   
               <div className="space-y-4 px-2">
-                <div>
-                  <h3 className="text-md font-semibold mb-2 text-white">About</h3>
+
+              <div>
+                  <h3 className="text-md font-semibold mb-2 text-white">Plot</h3>
                   <p className="text-sm text-gray-300 leading-relaxed">
-                    Zaid Saifi is an emerging talent in the mystery and thriller genre. 
-                    With a keen eye for intricate plot developments and psychological depth, 
-                    he crafts narratives that keep readers on the edge of their seats.
+                
+A student's mysterious disappearance from a hostel draws a detective into an investigation, uncovering hidden secrets buried within the hostel's walls.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-md font-semibold mb-2 text-white">Author</h3>
+                  <p className="text-sm text-gray-300 leading-relaxed">
+                  Arka is a poet and author, known for writing solo books, anthologies, audiobooks, and comics. Arka’s works have been featured in anthologies published by Blue Star Publication, Blue Cloud Publisher, and Thoughts Hymn Arc. Solo books by Arka are published by Ukiyoto Publishing, and Arka also contributes articles to various magazines.
                   </p>
                 </div>
   
-                <div>
-                  <h3 className="text-md font-semibold mb-2 text-white">Background</h3>
-                  <p className="text-sm text-gray-300 leading-relaxed">
-                    Trained in creative writing, Zaid has a background in criminology 
-                    which heavily influences his storytelling. His debut novel "Perfect Murder" 
-                    showcases his ability to weave complex narratives with unexpected twists.
-                  </p>
-                </div>
+            
   
                 <div>
-                  <h3 className="text-md font-semibold mb-2 text-white">Works</h3>
-                  <ul className="text-sm text-gray-300 space-y-1 list-disc pl-4">
-                    <li>Perfect Murder (Current Audiobook)</li>
-                    <li>Shadows of Deception (Upcoming)</li>
-                    <li>The Silent Witness (Planned)</li>
-                  </ul>
+                 
                 </div>
               </div>
             </div>
