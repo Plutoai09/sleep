@@ -220,16 +220,18 @@ const [duration, setDuration] = useState(0);
         });
 
 
+        
         const audioBooks = [
-          
-          { title: 'The Night of Shadows', url:  'https://storage.googleapis.com/plutoai/Horror%20hostel%20main%20ep%201.mp3' },
+
+          { title: 'Premium Pass Overview', url:  'https://storage.googleapis.com/plutoai/intro%20hostel%20of%20shadows.mp3' },
+           { title: 'The Night of Shadows', url:  'https://storage.googleapis.com/plutoai/Horror%20hostel%20main%20ep%201.mp3' }, 
           { title: 'Vultures are out', url:  'https://storage.googleapis.com/plutoai/Horror%20Hostel%20Main%20Ep2.mp3' },
           { title: 'Who is Subhash', url:  'https://storage.googleapis.com/plutoai/Hostel%20of%20Horror%20Main%20ep%203.mp3' },
           { title: 'Arjuns Secrets', url:  'https://storage.googleapis.com/plutoai/Hostel%20of%20horror%20ep4.mp3' },
           { title: 'Hitlist is out', url:  'https://storage.googleapis.com/plutoai/Hostel%20of%20Horror%20Main%20Episode%205.mp3' },
           { title: 'Help Help!', url:  'https://storage.googleapis.com/plutoai/Horror%20hostel%20main%20episode%206.mp3' },
           { title: 'Hostel of Shadows', url:  'https://storage.googleapis.com/plutoai/Hostel%20of%20Horrro%20Ep%207.mp3' },
-          { title: 'The Finale', url:  'https://storage.googleapis.com/plutoai/Hostel%20of%20Horror%20Episode%208.mp3' }
+          { title: 'The Finale', url:  'https://storage.googleapis.com/plutoai/Hostel%20of%20Horror%20Main%20Episode%208.mp3' }
           
         ];
         
@@ -895,8 +897,8 @@ useEffect(() => {
         const currentTimeInSeconds = audioElement.currentTime;
         setCurrentTime(currentTimeInSeconds);
         
-        const lastSubmitMinutes = Math.floor(lastSubmitTime / 300);
-        const currentMinutes = Math.floor(currentTimeInSeconds / 300);
+        const lastSubmitMinutes = Math.floor(lastSubmitTime / 60);
+        const currentMinutes = Math.floor(currentTimeInSeconds / 60);
         
         if (currentMinutes > lastSubmitMinutes) {
           submitToAirtabletime(currentMinutes);
@@ -1221,7 +1223,7 @@ useEffect(() => {
             <div className="p-4 h-[75vh] overflow-y-auto">
               <div className="text-left mb-4 mt-[2vh]">
                 <p className="text-sm text-gray-400 leading-relaxed">
-                  Episode : 
+                {`Episode ${currentChapter}`}: 
                   <span className="text-white font-semibold ml-2">
                     {chapters[currentChapter]?.title || `Chapter ${currentChapter + 1}`}
                   </span>

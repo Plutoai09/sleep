@@ -4,23 +4,43 @@ const NamePopup = ({ onClose }) => {
   const [mobileNumber, setMobileNumber] = useState('');
   const [password, setPassword] = useState('');
   const [status, setStatus] = useState('login');
+  const [errors, setErrors] = useState({
+    mobileNumber: '',
+    password: ''
+  });
   
+  const validateForm = () => {
+    const newErrors = {
+      mobileNumber: '',
+      password: ''
+    };
+    
+    if (mobileNumber.length !== 10) {
+      newErrors.mobileNumber = 'Mobile number must be 10 digits';
+    }
+    
+    if (password !== '5232') {
+      newErrors.password = 'Incorrect password';
+    }
+    
+    setErrors(newErrors);
+    return !newErrors.mobileNumber && !newErrors.password;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    localStorage.setItem('plutoName', mobileNumber);
-    localStorage.setItem('plutoPassword', password);
-    localStorage.setItem('accessUnlockedTime', Date.now());
-    
-    if (password === '5232') {
+    if (validateForm()) {
+      localStorage.setItem('plutoName', mobileNumber);
+      localStorage.setItem('plutoPassword', password);
+      localStorage.setItem('accessUnlockedTime', Date.now());
+      
       setStatus('loading');
       
       // Simulate loading and unlock process
       setTimeout(() => {
         setStatus('unlocked');
       }, 1500);
-    } else {
-      console.log('Password does not match');
     }
   };
 
@@ -75,23 +95,33 @@ const NamePopup = ({ onClose }) => {
         <h2 className="text-xl font-bold mb-4 text-center">Premium Access</h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="number"
-            value={mobileNumber}
-            onChange={(e) => setMobileNumber(e.target.value)}
-            placeholder="Your Mobile Number"
-            className="w-full bg-gray-800 text-white px-3 py-2 rounded-md"
-            required
-          />
+          <div>
+            <input
+              type="number"
+              value={mobileNumber}
+              onChange={(e) => setMobileNumber(e.target.value)}
+              placeholder="Your Mobile Number"
+              className="w-full bg-gray-800 text-white px-3 py-2 rounded-md"
+              required
+            />
+            {errors.mobileNumber && (
+              <p className="text-red-500 text-sm mt-1">{errors.mobileNumber}</p>
+            )}
+          </div>
           
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            className="w-full bg-gray-800 text-white px-3 py-2 rounded-md"
-            required
-          />
+          <div>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              className="w-full bg-gray-800 text-white px-3 py-2 rounded-md"
+              required
+            />
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+            )}
+          </div>
           
           <button
             type="submit"
