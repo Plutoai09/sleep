@@ -12,7 +12,7 @@ const ThankYouScreen = () => (
         Thank You for Your Submission!
       </h2>
       <p className="text-gray-600">
-        You have joined the waitlist.We will evaluate your idea and reach out to you with Yes or No in next 48 hours.
+        You have joined the waitlist. We will evaluate your idea and reach out to you with Yes or No in next 48 hours.
       </p>
     </div>
   </div>
@@ -198,6 +198,10 @@ const Waitlist = () => {
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
                         <span className="text-gray-700">All genres are welcome - fantasy, mystery, romance, or literary fiction</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
+                        <span className="text-gray-700">No participation or registration fees</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-2"></div>
