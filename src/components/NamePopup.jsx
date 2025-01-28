@@ -92,7 +92,7 @@ const NamePopup = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/50">
       <div className="bg-gray-900 p-6 rounded-lg w-80 text-white">
-        <h2 className="text-xl font-bold mb-4 text-center">Premium Access</h2>
+        <h2 className="text-xl font-bold mb-4 text-center">Unlock Premium</h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -100,7 +100,7 @@ const NamePopup = ({ onClose }) => {
               type="number"
               value={mobileNumber}
               onChange={(e) => setMobileNumber(e.target.value)}
-              placeholder="Registered Number"
+              placeholder="Mobile Number"
               className="w-full bg-gray-800 text-white px-3 py-2 rounded-md"
               required
             />
@@ -127,7 +127,7 @@ const NamePopup = ({ onClose }) => {
             type="submit"
             className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700"
           > 
-            Start Free Trial
+            Log In
           </button>
         </form>
       </div>
