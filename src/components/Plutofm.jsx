@@ -1223,7 +1223,7 @@ useEffect(() => {
             <div className="p-4 h-[75vh] overflow-y-auto">
               <div className="text-left mb-4 mt-[2vh]">
                 <p className="text-sm text-gray-400 leading-relaxed">
-                {`Episode ${currentChapter}`}: 
+                {`Episode ${currentChapter + 1}`}: 
                   <span className="text-white font-semibold ml-2">
                     {chapters[currentChapter]?.title || `Chapter ${currentChapter + 1}`}
                   </span>
