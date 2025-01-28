@@ -19,7 +19,7 @@ const NamePopup = ({ onClose }) => {
       newErrors.mobileNumber = 'Mobile number must be 10 digits';
     }
     
-    if (password !== '5232') {
+    if (password !== '5233') {
       newErrors.password = 'Incorrect password';
     }
     
