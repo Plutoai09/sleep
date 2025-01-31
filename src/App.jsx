@@ -27,6 +27,7 @@ import { Home } from "lucide-react";
 import ShayariEnhancerref from "./components/ShayariEnhancerref";
 import StoryCompetitionForm from "./components/StoryCompetitionForm";
 import AirtableLookup from "./components/AirtableLookup";
+import CID from "./components/CID";
 
 
 
@@ -36,6 +37,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<ShayariEnhancer />} />
+        <Route path="/cid" element={<CID />} />
         <Route path="/fm" element={<Plutofm />} />
         <Route path="/look" element={<AirtableLookup />} />
         <Route path="/story" element={<StoryCompetitionForm />} />
