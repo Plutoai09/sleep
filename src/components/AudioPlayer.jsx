@@ -164,15 +164,7 @@ const [duration, setDuration] = useState(0);
 
 
 
-  useEffect(() => {
-    const authCode = localStorage.getItem('authCode');
-    const plutoemail = localStorage.getItem('plutoemail');
-    
-    if (authCode !== 'pluto_success' && !plutoemail) {
-      navigate('/login');
-    }
-  }, []);
-
+ 
 
 
   const preloadImages = (imageSrcs) => {
