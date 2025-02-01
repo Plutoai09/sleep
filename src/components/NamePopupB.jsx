@@ -1,38 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
-const NamePopupB ({ onClose }) => {
-  const [mobileNumber, setMobileNumber] = useState('');
-  const [password, setPassword] = useState('');
+const NamePopup = ({ onClose }) => {
+  const [name, setName] = useState('');
   const [status, setStatus] = useState('login');
-  const [errors, setErrors] = useState({
-    mobileNumber: '',
-    password: ''
-  });
+  const [error, setError] = useState('');
   
   const validateForm = () => {
-    const newErrors = {
-      mobileNumber: '',
-      password: ''
-    };
-    
-    if (mobileNumber.length !== 10) {
-      newErrors.mobileNumber = 'Mobile number must be 10 digits';
+    if (!name.trim()) {
+      setError('Please enter your name');
+      return false;
     }
-    
-    if (password !== '5233') {
-      newErrors.password = 'Incorrect password';
-    }
-    
-    setErrors(newErrors);
-    return !newErrors.mobileNumber && !newErrors.password;
+    return true;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
     if (validateForm()) {
-      localStorage.setItem('plutoName', mobileNumber);
-      localStorage.setItem('plutoPassword', password);
+      localStorage.setItem('plutoName', name);
       localStorage.setItem('accessUnlockedTime', Date.now());
       
       setStatus('loading');
@@ -45,7 +30,7 @@ const NamePopupB ({ onClose }) => {
   };
 
   const handleClose = () => {
-    onClose(mobileNumber);
+    onClose(name);
   };
  
   if (status === 'loading') {
@@ -97,29 +82,15 @@ const NamePopupB ({ onClose }) => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <input
-              type="number"
-              value={mobileNumber}
-              onChange={(e) => setMobileNumber(e.target.value)}
-              placeholder="Mobile Number"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter Your Name"
               className="w-full bg-gray-800 text-white px-3 py-2 rounded-md"
               required
             />
-            {errors.mobileNumber && (
-              <p className="text-red-500 text-sm mt-1">{errors.mobileNumber}</p>
-            )}
-          </div>
-          
-          <div>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              className="w-full bg-gray-800 text-white px-3 py-2 rounded-md"
-              required
-            />
-            {errors.password && (
-              <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+            {error && (
+              <p className="text-red-500 text-sm mt-1">{error}</p>
             )}
           </div>
           
@@ -127,7 +98,7 @@ const NamePopupB ({ onClose }) => {
             type="submit"
             className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700"
           > 
-            Log In
+            Unlock Access
           </button>
         </form>
       </div>
@@ -142,19 +113,19 @@ const PremiumAccessWrapper = ({ onClose }) => {
   useEffect(() => {
     const accessUnlockedTime = localStorage.getItem('accessUnlockedTime');
     
-    // Check if name is stored and access is still valid (within 24 hours)
+    // Check if access is still valid (within 24 hours)
     if (!accessUnlockedTime || 
         (Date.now() - parseInt(accessUnlockedTime)) > 24 * 60 * 60 * 1000) {
       setShowPopup(true);
     }
   }, []);
 
-  const handleClose = (mobileNumber) => {
+  const handleClose = (name) => {
     setShowPopup(false);
-    onClose(mobileNumber);
+    onClose(name);
   };
 
-  return showPopup ? <NamePopupB onClose={handleClose} /> : null;
+  return showPopup ? <NamePopup onClose={handleClose} /> : null;
 };
 
 export default PremiumAccessWrapper;

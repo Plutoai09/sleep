@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./ui/ripple.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { Home } from "lucide-react"; // Add Home icon import
-import NamePopup from './NamePopup.jsx';
+import NamePopupB from './NamePopupB.jsx';
 
 
 
@@ -227,6 +227,9 @@ const [duration, setDuration] = useState(0);
            { title: 'CID in action', url:  'https://storage.googleapis.com/plutoai/CID%20EP1.mp3' }, 
           { title: 'Vultures are out', url:  'https://storage.googleapis.com/plutoai/CID%20EP%202.mp3' },
           { title: 'Who is Subhash', url:  'https://storage.googleapis.com/plutoai/CID%20Ep3.mp3' },
+           { title: 'Diary ka raaz', url:  'https://storage.googleapis.com/plutoai/CID%20ep4.mp3' },
+          { title: 'Subhash ki sachai', url:  'https://storage.googleapis.com/plutoai/CID%20Ep5.mp3' },
+
          
         ];
         
@@ -1118,7 +1121,7 @@ useEffect(() => {
 
   return (
     <>
-    <NamePopup onClose={handleNameSubmit} />
+    <NamePopupB onClose={handleNameSubmit} />
     <div className="fixed inset-0 flex items-center justify-center bg-black min-h-[100dvh]">
       {isLoading ? (
         <LoadingSkeleton />
@@ -1166,7 +1169,7 @@ useEffect(() => {
           {/* Controls Section */}
           <div className="px-2 mt-4">
             <div className="flex justify-between items-center">
-              <h2 className="text-lg font-semibold text-white">CID : Hostel Mystery</h2>
+              <h2 className="text-lg font-semibold text-white">CID : Hostel Mystery | Fan Fiction</h2>
               <div 
                 onClick={handleSupportClick}
                 className="cursor-pointer px-2 py-1 rounded-full flex items-center justify-center bg-gray-800"
