@@ -224,7 +224,7 @@ const [duration, setDuration] = useState(0);
         const audioBooks = [
           { title: 'Promo', url:  'https://storage.googleapis.com/plutoai/CID%20promo.mp3' }, 
      
-           { title: 'CID in action', url:  'https://storage.googleapis.com/plutoai/CID%20EP1%20UPDATE.mp3' }, 
+           { title: 'CID in action', url:  'https://storage.googleapis.com/plutoai/CID%20EP1.mp3' }, 
           { title: 'Vultures are out', url:  'https://storage.googleapis.com/plutoai/CID%20EP%202.mp3' },
           { title: 'Who is Subhash', url:  'https://storage.googleapis.com/plutoai/CID%20Ep3.mp3' },
            { title: 'Diary ka raaz', url:  'https://storage.googleapis.com/plutoai/CID%20ep4.mp3' },
